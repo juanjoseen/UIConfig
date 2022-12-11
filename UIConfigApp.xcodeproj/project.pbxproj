@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D3B5CFF2946473100D912A3 /* GenericSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3B5CFE2946473100D912A3 /* GenericSheet.swift */; };
+		0D3B5D0129464AF600D912A3 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3B5D0029464AF600D912A3 /* CGFloat.swift */; };
 		0D58C5D32944D0BE00418A7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D58C5D22944D0BE00418A7F /* AppDelegate.swift */; };
 		0D58C5D52944D0BE00418A7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D58C5D42944D0BE00418A7F /* SceneDelegate.swift */; };
 		0D58C5D72944D0BE00418A7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D58C5D62944D0BE00418A7F /* ViewController.swift */; };
@@ -59,6 +61,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D3B5CFE2946473100D912A3 /* GenericSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericSheet.swift; sourceTree = "<group>"; };
+		0D3B5D0029464AF600D912A3 /* CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
 		0D58C5CF2944D0BE00418A7F /* UIConfigApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIConfigApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D58C5D22944D0BE00418A7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0D58C5D42944D0BE00418A7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 				0DB981AF2944FCE600C1DE14 /* Extensions */,
 				0DB981A22944FCB900C1DE14 /* UIConfig.h */,
 				0DFD46DF29450CB800251542 /* Lottie.swift */,
+				0D3B5CFE2946473100D912A3 /* GenericSheet.swift */,
 			);
 			path = UIConfig;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 				0DB981B12944FCF700C1DE14 /* DateFormatter.swift */,
 				0DB981B22944FCF700C1DE14 /* Fonts.swift */,
 				0DB981B02944FCF700C1DE14 /* String.swift */,
+				0D3B5D0029464AF600D912A3 /* CGFloat.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -360,11 +366,13 @@
 			files = (
 				0DB981C62944FD1400C1DE14 /* UIView.swift in Sources */,
 				0DFD46DE2945083000251542 /* Bundle.swift in Sources */,
+				0D3B5CFF2946473100D912A3 /* GenericSheet.swift in Sources */,
 				0DB981C82944FD1400C1DE14 /* UIColor.swift in Sources */,
 				0DB981C72944FD1400C1DE14 /* UIImage.swift in Sources */,
 				0DB981B42944FCF700C1DE14 /* DateFormatter.swift in Sources */,
 				0DFD46E029450CB800251542 /* Lottie.swift in Sources */,
 				0DB981B52944FCF700C1DE14 /* Fonts.swift in Sources */,
+				0D3B5D0129464AF600D912A3 /* CGFloat.swift in Sources */,
 				0DB981C32944FD1400C1DE14 /* UITextField.swift in Sources */,
 				0DB981C42944FD1400C1DE14 /* UIButton.swift in Sources */,
 				0DB981C52944FD1400C1DE14 /* UILabel.swift in Sources */,
