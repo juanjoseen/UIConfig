@@ -33,4 +33,8 @@ public extension UIColor {
     static var success: UIColor {
         return UIColor(red: 0.26, green: 0.63, blue: 0.28, alpha: 1.00)
     }
+    
+    static var failure: UIColor {
+        return UIColor(red: 0.83, green: 0.18, blue: 0.18, alpha: 1.00)
+    }
 }

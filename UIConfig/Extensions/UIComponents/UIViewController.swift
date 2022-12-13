@@ -34,6 +34,12 @@ public extension UIViewController {
         present(successVC, animated: true)
     }
     
+    func showError(title: String? = nil, message: String? = nil, delegate: ErrorDelegate? = nil) {
+        let errorVC: ErrorView = ErrorView(title: title, message: message)
+        errorVC.delegate = delegate
+        present(errorVC, animated: true)
+    }
+    
     func showLoading(message: String? = nil) {
         
         let lblMessage: UILabel = UILabel(text: message, color: .white, font: .title(30), alignment: .center)
