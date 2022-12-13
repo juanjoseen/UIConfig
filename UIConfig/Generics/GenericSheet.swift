@@ -22,7 +22,9 @@ open class GenericSheet: UIViewController {
     weak public var delegate: GenericSheetDelegate?
     
     lazy var bgView: UIView = {
-        return UIView(color: .systemBackground)
+        let view: UIView = UIView(radius: 40, color: .systemBackground)
+        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        return view
     }()
     
     public convenience init(title: String? = nil, message: String? = nil, buttons: [String], cancelTitle: String = "Cancelar") {
@@ -107,9 +109,9 @@ open class GenericSheet: UIViewController {
             bgView.bottomAnchor.constraint(equalTo: blurView.bottomAnchor),
             bgView.leadingAnchor.constraint(equalTo: blurView.leadingAnchor),
             bgView.trailingAnchor.constraint(equalTo: blurView.trailingAnchor),
-            bgView.topAnchor.constraint(equalTo: lblTitle.topAnchor, constant: .inversePadding),
+            bgView.topAnchor.constraint(equalTo: lblTitle.topAnchor, constant: .inversePadding * 2.0),
             
-            btnCancel.heightAnchor.constraint(equalToConstant: 46),
+            btnCancel.heightAnchor.constraint(equalToConstant: .buttonHeight),
             btnCancel.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding * 1.5),
             btnCancel.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .inversePadding * 1.5),
             btnCancel.bottomAnchor.constraint(equalTo: blurView.safeAreaLayoutGuide.bottomAnchor, constant: .inversePadding),

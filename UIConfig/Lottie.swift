@@ -20,4 +20,28 @@ open class Lottie {
             return view
         }
     }
+    
+    public static var success: AnimationView {
+        get {
+            let view: AnimationView = AnimationView(name: "done", bundle: .local)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.contentMode = .scaleAspectFit
+            view.backgroundColor = .clear
+            view.animationSpeed = 1.0
+            view.loopMode = .loop
+            return view
+        }
+    }
+    
+    public static var fail: AnimationView {
+        get {
+            let view: AnimationView = AnimationView(name: "error", bundle: .local)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.contentMode = .scaleAspectFit
+            view.backgroundColor = .clear
+            view.animationSpeed = 1.0
+            view.loopMode = .loop
+            return view
+        }
+    }
 }

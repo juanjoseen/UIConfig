@@ -28,6 +28,12 @@ public extension UIViewController {
         navigationController?.popViewController(animated: animated)
     }
     
+    func showSuccess(title: String? = nil, message: String? = nil, delegate: SuccessDelegate? = nil) {
+        let successVC: SuccessView = SuccessView(title: title, message: message)
+        successVC.delegate = delegate
+        present(successVC, animated: true)
+    }
+    
     func showLoading(message: String? = nil) {
         
         let lblMessage: UILabel = UILabel(text: message, color: .white, font: .title(30), alignment: .center)
