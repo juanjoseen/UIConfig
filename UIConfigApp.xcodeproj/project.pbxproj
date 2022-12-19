@@ -37,6 +37,7 @@
 		0DB981C82944FD1400C1DE14 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB981BF2944FD1400C1DE14 /* UIColor.swift */; };
 		0DFD46DE2945083000251542 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFD46DD2945083000251542 /* Bundle.swift */; };
 		0DFD46E029450CB800251542 /* Lottie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFD46DF29450CB800251542 /* Lottie.swift */; };
+		C679724D294B947A00F6329D /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C679724C294B947A00F6329D /* UIApplication.swift */; };
 		F21A952645FCCE636CF9B039 /* Pods_UIConfig.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCD7A9CE8CAF8B5BF4B4C19A /* Pods_UIConfig.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,9 +97,10 @@
 		0DB981BF2944FD1400C1DE14 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		0DFD46DD2945083000251542 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		0DFD46DF29450CB800251542 /* Lottie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lottie.swift; sourceTree = "<group>"; };
-		9636F0EACFA6A874BCE904F1 /* Pods-UIConfig.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIConfig.release.xcconfig"; path = "../../Gaso Mx/Pods/Target Support Files/Pods-UIConfig/Pods-UIConfig.release.xcconfig"; sourceTree = "<group>"; };
+		9636F0EACFA6A874BCE904F1 /* Pods-UIConfig.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIConfig.release.xcconfig"; path = "../../Gaso-Mx/Pods/Target Support Files/Pods-UIConfig/Pods-UIConfig.release.xcconfig"; sourceTree = "<group>"; };
+		C679724C294B947A00F6329D /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		DCD7A9CE8CAF8B5BF4B4C19A /* Pods_UIConfig.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIConfig.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5F9847D45179049C7416A3E /* Pods-UIConfig.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIConfig.debug.xcconfig"; path = "../../Gaso Mx/Pods/Target Support Files/Pods-UIConfig/Pods-UIConfig.debug.xcconfig"; sourceTree = "<group>"; };
+		E5F9847D45179049C7416A3E /* Pods-UIConfig.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIConfig.debug.xcconfig"; path = "../../Gaso-Mx/Pods/Target Support Files/Pods-UIConfig/Pods-UIConfig.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +195,7 @@
 				0DB981B62944FCFD00C1DE14 /* UIComponents */,
 				0DB981B12944FCF700C1DE14 /* DateFormatter.swift */,
 				0DB981B22944FCF700C1DE14 /* Fonts.swift */,
+				C679724C294B947A00F6329D /* UIApplication.swift */,
 				0DB981B02944FCF700C1DE14 /* String.swift */,
 				0D3B5D0029464AF600D912A3 /* CGFloat.swift */,
 			);
@@ -394,6 +397,7 @@
 				0DB981C72944FD1400C1DE14 /* UIImage.swift in Sources */,
 				0DB981B42944FCF700C1DE14 /* DateFormatter.swift in Sources */,
 				0D3DF0982948D75400115972 /* ErrorView.swift in Sources */,
+				C679724D294B947A00F6329D /* UIApplication.swift in Sources */,
 				0DFD46E029450CB800251542 /* Lottie.swift in Sources */,
 				0DB981B52944FCF700C1DE14 /* Fonts.swift in Sources */,
 				0D3B5D0129464AF600D912A3 /* CGFloat.swift in Sources */,
