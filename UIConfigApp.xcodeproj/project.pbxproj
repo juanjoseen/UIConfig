@@ -19,6 +19,7 @@
 		0D58C5DA2944D0BE00418A7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D58C5D82944D0BE00418A7F /* Main.storyboard */; };
 		0D58C5DC2944D0C000418A7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D58C5DB2944D0C000418A7F /* Assets.xcassets */; };
 		0D58C5DF2944D0C000418A7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D58C5DD2944D0C000418A7F /* LaunchScreen.storyboard */; };
+		0D8BC4902951301200E0D6FB /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8BC48F2951301200E0D6FB /* UIImageView.swift */; };
 		0DB981A32944FCB900C1DE14 /* UIConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DB981A22944FCB900C1DE14 /* UIConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0DB981A62944FCB900C1DE14 /* UIConfig.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB981A02944FCB900C1DE14 /* UIConfig.framework */; };
 		0DB981A72944FCB900C1DE14 /* UIConfig.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB981A02944FCB900C1DE14 /* UIConfig.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -80,6 +81,7 @@
 		0D58C5DB2944D0C000418A7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D58C5DE2944D0C000418A7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D58C5E02944D0C000418A7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D8BC48F2951301200E0D6FB /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		0DB981A02944FCB900C1DE14 /* UIConfig.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIConfig.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DB981A22944FCB900C1DE14 /* UIConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIConfig.h; sourceTree = "<group>"; };
 		0DB981AD2944FCE000C1DE14 /* axkan_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = axkan_loading.json; sourceTree = "<group>"; };
@@ -97,10 +99,10 @@
 		0DB981BF2944FD1400C1DE14 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		0DFD46DD2945083000251542 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		0DFD46DF29450CB800251542 /* Lottie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lottie.swift; sourceTree = "<group>"; };
-		9636F0EACFA6A874BCE904F1 /* Pods-UIConfig.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIConfig.release.xcconfig"; path = "../../Gaso-Mx/Pods/Target Support Files/Pods-UIConfig/Pods-UIConfig.release.xcconfig"; sourceTree = "<group>"; };
+		9636F0EACFA6A874BCE904F1 /* Pods-UIConfig.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIConfig.release.xcconfig"; path = "../../Gaso Mx/Pods/Target Support Files/Pods-UIConfig/Pods-UIConfig.release.xcconfig"; sourceTree = "<group>"; };
 		C679724C294B947A00F6329D /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		DCD7A9CE8CAF8B5BF4B4C19A /* Pods_UIConfig.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIConfig.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5F9847D45179049C7416A3E /* Pods-UIConfig.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIConfig.debug.xcconfig"; path = "../../Gaso-Mx/Pods/Target Support Files/Pods-UIConfig/Pods-UIConfig.debug.xcconfig"; sourceTree = "<group>"; };
+		E5F9847D45179049C7416A3E /* Pods-UIConfig.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIConfig.debug.xcconfig"; path = "../../Gaso Mx/Pods/Target Support Files/Pods-UIConfig/Pods-UIConfig.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 				0DB981BF2944FD1400C1DE14 /* UIColor.swift */,
 				0DB981B92944FD1300C1DE14 /* UIFont.swift */,
 				0DB981BE2944FD1400C1DE14 /* UIImage.swift */,
+				0D8BC48F2951301200E0D6FB /* UIImageView.swift */,
 				0DB981BC2944FD1400C1DE14 /* UILabel.swift */,
 				0DB981B82944FD1300C1DE14 /* UITableView.swift */,
 				0DB981BA2944FD1300C1DE14 /* UITextField.swift */,
@@ -405,6 +408,7 @@
 				0DB981C42944FD1400C1DE14 /* UIButton.swift in Sources */,
 				0DB981C52944FD1400C1DE14 /* UILabel.swift in Sources */,
 				0DB981C22944FD1400C1DE14 /* UIFont.swift in Sources */,
+				0D8BC4902951301200E0D6FB /* UIImageView.swift in Sources */,
 				0DB981C12944FD1400C1DE14 /* UITableView.swift in Sources */,
 				0DB981C02944FD1400C1DE14 /* UIViewController.swift in Sources */,
 				0DB981B32944FCF700C1DE14 /* String.swift in Sources */,
