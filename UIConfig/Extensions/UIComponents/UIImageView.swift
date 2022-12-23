@@ -8,7 +8,7 @@
 import UIKit
 
 public extension UIImageView {
-    convenience init(name: String, isSystem: Bool = true, size: CGFloat, tint: UIColor = .textColor) {
+    convenience init(name: String, isSystem: Bool = true, size: CGFloat = 0, tint: UIColor = .textColor) {
         self.init()
         self.translatesAutoresizingMaskIntoConstraints = false
         if isSystem {
