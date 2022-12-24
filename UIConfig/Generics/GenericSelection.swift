@@ -9,8 +9,8 @@ import UIKit
 
 public protocol GenericSelectionDelegate: AnyObject {
     func didCancel(selection: GenericSelection)
-    func didSelect(index: Int)
-    func didSelect(indexes: [Int])
+    func didSelect(_ selection: GenericSelection, index: Int)
+    func didSelect(_ selection: GenericSelection, indexes: [Int])
 }
 
 open class GenericSelection: UIViewController {
@@ -33,15 +33,16 @@ open class GenericSelection: UIViewController {
     private var multipleSelection: Bool!
     private var options: [String]!
     private var titleMessage: String?
-    private var cancelTitle: String!
+    private var acceptTitle: String!
+    
     public weak var delegate: GenericSelectionDelegate?
     
     private var selectedIndexes: [Int] = []
     
-    public convenience init(title: String? = nil, cancel: String = "Cancel", options: [String], multipleSelection: Bool = false) {
+    public convenience init(title: String? = nil, accept: String = "Aceptar", options: [String], multipleSelection: Bool = false) {
         self.init()
         self.options = options
-        self.cancelTitle = cancel
+        self.acceptTitle = accept
         self.titleMessage = title
         self.multipleSelection = multipleSelection
     }
@@ -72,8 +73,8 @@ open class GenericSelection: UIViewController {
         let blurView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
         blurView.translatesAutoresizingMaskIntoConstraints = false
         
-        let btnCancel: UIButton = UIButton(title: cancelTitle, color: .white, bgColor: .systemRed, radius: .standardRadius)
-        btnCancel.addTarget(self, action: #selector(actionCancel), for: .touchUpInside)
+        let btnAccept: UIButton = UIButton(title: acceptTitle, color: .white, bgColor: .success, radius: .standardRadius)
+        btnAccept.addTarget(self, action: #selector(actionAccept), for: .touchUpInside)
         
         let lblTitle: UILabel = UILabel(text: titleMessage, font: .title(25), alignment: .center)
         
@@ -83,7 +84,7 @@ open class GenericSelection: UIViewController {
         }
         
         blurView.contentView.addSubview(bgView)
-        bgView.addSubview(btnCancel)
+        bgView.addSubview(btnAccept)
         bgView.addSubview(stackView)
         bgView.addSubview(lblTitle)
         
@@ -100,20 +101,24 @@ open class GenericSelection: UIViewController {
             bgView.trailingAnchor.constraint(equalTo: blurView.trailingAnchor),
             bgView.topAnchor.constraint(equalTo: lblTitle.topAnchor, constant: .inversePadding * 2.0),
             
-            btnCancel.heightAnchor.constraint(equalToConstant: .buttonHeight),
-            btnCancel.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding * 1.5),
-            btnCancel.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .inversePadding * 1.5),
-            btnCancel.bottomAnchor.constraint(equalTo: blurView.safeAreaLayoutGuide.bottomAnchor, constant: .inversePadding),
+            btnAccept.heightAnchor.constraint(equalToConstant: .buttonHeight),
+            btnAccept.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding * 1.5),
+            btnAccept.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .inversePadding * 1.5),
+            btnAccept.bottomAnchor.constraint(equalTo: blurView.safeAreaLayoutGuide.bottomAnchor, constant: .inversePadding),
             
             stackView.heightAnchor.constraint(equalToConstant: CGFloat(options.count) * 60.0),
             stackView.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding * 1.5),
             stackView.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .inversePadding * 1.5),
-            stackView.bottomAnchor.constraint(equalTo: btnCancel.topAnchor, constant: .inversePadding * 1.5),
+            stackView.bottomAnchor.constraint(equalTo: btnAccept.topAnchor, constant: .inversePadding * 1.5),
             
             lblTitle.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding),
             lblTitle.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .inversePadding),
             lblTitle.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: .inversePadding * 2.0),
         ])
+    }
+    
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        actionCancel()
     }
     
     private func hideView(animated: Bool = true, completion: (() -> Void)? = nil) {
@@ -150,6 +155,12 @@ open class GenericSelection: UIViewController {
             for index in indexes {
                 selectIndex(index)
             }
+        }
+    }
+    
+    @objc private func actionAccept() {
+        hideView {
+            self.dismiss(animated: false)
         }
     }
     
@@ -204,9 +215,9 @@ open class GenericSelection: UIViewController {
             if !selectedIndexes.contains(index) {
                 selectedIndexes.append(index)
             }
-            delegate?.didSelect(indexes: selectedIndexes)
+            delegate?.didSelect(self, indexes: selectedIndexes)
         } else {
-            delegate?.didSelect(index: index)
+            delegate?.didSelect(self, index: index)
         }
     }
     
@@ -214,7 +225,7 @@ open class GenericSelection: UIViewController {
         if multipleSelection {
             if selectedIndexes.contains(index) {
                 selectedIndexes.removeAll(where: { $0 == index })
-                delegate?.didSelect(indexes: selectedIndexes)
+                delegate?.didSelect(self, indexes: selectedIndexes)
             }
         }
     }
