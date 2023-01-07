@@ -34,6 +34,9 @@ public extension UIButton {
         }
         tintColor = color
         
+        self.addTarget(self, action: #selector(pressedDown), for: .touchDown)
+        self.addTarget(self, action: #selector(pressedUp), for: .touchUpInside)
+        self.addTarget(self, action: #selector(pressedUp), for: .touchUpOutside)
     }
     
     private func impact() {

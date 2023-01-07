@@ -28,4 +28,11 @@ public extension UIView {
             return UIScreen.main.bounds.width
         }
     }
+    
+    func shadow(color: UIColor = UIColor(white: 0.5, alpha: 1.0), offset: CGSize = .zero, radius: CGFloat = 4.0, opacity: Float = 1.0) {
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowOffset = offset
+        self.layer.shadowRadius = radius
+        self.layer.shadowOpacity = opacity
+    }
 }
