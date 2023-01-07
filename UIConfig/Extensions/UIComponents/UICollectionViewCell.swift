@@ -28,7 +28,7 @@ public extension UICollectionView {
      - Parameter type: UICollectionViewCell.Type
      - Parameter indexPath: IndexPath
      */
-    func dequeueCell<T: UICollectionViewCell>(withType type: UITableViewCell.Type, for indexPath: IndexPath) -> T? {
+    func dequeueCell<T: UICollectionViewCell>(withType type: UICollectionViewCell.Type, for indexPath: IndexPath) -> T? {
         return dequeueReusableCell(withReuseIdentifier: type.identifier, for: indexPath) as? T
     }
     
