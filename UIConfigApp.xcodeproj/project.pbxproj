@@ -20,6 +20,7 @@
 		0D58C5DA2944D0BE00418A7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D58C5D82944D0BE00418A7F /* Main.storyboard */; };
 		0D58C5DC2944D0C000418A7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D58C5DB2944D0C000418A7F /* Assets.xcassets */; };
 		0D58C5DF2944D0C000418A7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D58C5DD2944D0C000418A7F /* LaunchScreen.storyboard */; };
+		0D82F1C6296A011C0073DEF5 /* UICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D82F1C5296A011C0073DEF5 /* UICollectionViewCell.swift */; };
 		0D8BC4902951301200E0D6FB /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8BC48F2951301200E0D6FB /* UIImageView.swift */; };
 		0DB981A32944FCB900C1DE14 /* UIConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DB981A22944FCB900C1DE14 /* UIConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0DB981A62944FCB900C1DE14 /* UIConfig.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB981A02944FCB900C1DE14 /* UIConfig.framework */; };
@@ -83,6 +84,7 @@
 		0D58C5DB2944D0C000418A7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D58C5DE2944D0C000418A7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D58C5E02944D0C000418A7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D82F1C5296A011C0073DEF5 /* UICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCell.swift; sourceTree = "<group>"; };
 		0D8BC48F2951301200E0D6FB /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		0DB981A02944FCB900C1DE14 /* UIConfig.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIConfig.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DB981A22944FCB900C1DE14 /* UIConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIConfig.h; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				0D8BC48F2951301200E0D6FB /* UIImageView.swift */,
 				0DB981BC2944FD1400C1DE14 /* UILabel.swift */,
 				0DB981B82944FD1300C1DE14 /* UITableView.swift */,
+				0D82F1C5296A011C0073DEF5 /* UICollectionViewCell.swift */,
 				0DB981BA2944FD1300C1DE14 /* UITextField.swift */,
 				0DB981BD2944FD1400C1DE14 /* UIView.swift */,
 				0DB981B72944FD1300C1DE14 /* UIViewController.swift */,
@@ -401,6 +404,7 @@
 				0D3B5CFF2946473100D912A3 /* GenericSheet.swift in Sources */,
 				0DB981C82944FD1400C1DE14 /* UIColor.swift in Sources */,
 				0DB981C72944FD1400C1DE14 /* UIImage.swift in Sources */,
+				0D82F1C6296A011C0073DEF5 /* UICollectionViewCell.swift in Sources */,
 				0DB981B42944FCF700C1DE14 /* DateFormatter.swift in Sources */,
 				0D3DF0982948D75400115972 /* ErrorView.swift in Sources */,
 				C679724D294B947A00F6329D /* UIApplication.swift in Sources */,
