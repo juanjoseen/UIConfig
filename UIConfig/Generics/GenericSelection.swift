@@ -143,6 +143,11 @@ open class GenericSelection: UIViewController {
     }
     
     public func selectIndex(_ index: Int) {
+        for subView in stackView.arrangedSubviews {
+            if let button: UIButton = subView as? UIButton {
+                unselect(button)
+            }
+        }
         if index < stackView.arrangedSubviews.count && index >= 0 {
             if let button: UIButton = stackView.arrangedSubviews[index] as? UIButton {
                 select(button)
@@ -151,6 +156,11 @@ open class GenericSelection: UIViewController {
     }
     
     public func selectIndexes(_ indexes: [Int]) {
+        for subView in stackView.arrangedSubviews {
+            if let button: UIButton = subView as? UIButton {
+                unselect(button)
+            }
+        }
         if indexes.count > 0 {
             for index in indexes {
                 selectIndex(index)
