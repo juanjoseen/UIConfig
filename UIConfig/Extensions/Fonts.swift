@@ -66,23 +66,27 @@ open class Verdana {
 }
 
 open class Avenir {
-    public static func regular(_ size:CGFloat) -> UIFont {
+    public static func regular(_ size: CGFloat) -> UIFont {
         return UIFont(name: "Avenir", size: size)!
     }
 
-    public static func light(_ size:CGFloat) -> UIFont {
+    public static func light(_ size: CGFloat) -> UIFont {
         return UIFont(name: "Avenir-Light", size: size)!
     }
+    
+    public static func italic(_ size: CGFloat) -> UIFont {
+        return UIFont(name: "Avenir-Oblique", size: size)!
+    }
 
-    public static func lightItalic(_ size:CGFloat) -> UIFont {
+    public static func lightItalic(_ size: CGFloat) -> UIFont {
         return UIFont(name: "Avenir-LightOblique", size: size)!
     }
 
-    public static func medium(_ size:CGFloat) -> UIFont {
+    public static func medium(_ size: CGFloat) -> UIFont {
         return UIFont(name: "Avenir-Medium", size: size)!
     }
 
-    public static func bold(_ size:CGFloat) -> UIFont {
+    public static func bold(_ size: CGFloat) -> UIFont {
         return UIFont(name: "Avenir-Heavy", size: size)!
     }
 }
