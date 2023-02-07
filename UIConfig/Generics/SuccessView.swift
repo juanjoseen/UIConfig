@@ -16,7 +16,7 @@ open class SuccessView: UIViewController {
     
     private var strTitle: String? = "Éxito"
     private var message: String?
-    private var success: AnimationView = Lottie.success
+    private var success: LottieAnimationView = Lottie.success
     
     public weak var delegate: SuccessDelegate?
     

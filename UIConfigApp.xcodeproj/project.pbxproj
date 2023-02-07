@@ -103,10 +103,10 @@
 		0DB981BF2944FD1400C1DE14 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		0DFD46DD2945083000251542 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		0DFD46DF29450CB800251542 /* Lottie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lottie.swift; sourceTree = "<group>"; };
-		9636F0EACFA6A874BCE904F1 /* Pods-UIConfig.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIConfig.release.xcconfig"; path = "../../Useless-Random-Facts/Pods/Target Support Files/Pods-UIConfig/Pods-UIConfig.release.xcconfig"; sourceTree = "<group>"; };
+		9636F0EACFA6A874BCE904F1 /* Pods-UIConfig.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIConfig.release.xcconfig"; path = "../../Voyage/Pods/Target Support Files/Pods-UIConfig/Pods-UIConfig.release.xcconfig"; sourceTree = "<group>"; };
 		C679724C294B947A00F6329D /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		DCD7A9CE8CAF8B5BF4B4C19A /* Pods_UIConfig.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIConfig.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5F9847D45179049C7416A3E /* Pods-UIConfig.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIConfig.debug.xcconfig"; path = "../../Useless-Random-Facts/Pods/Target Support Files/Pods-UIConfig/Pods-UIConfig.debug.xcconfig"; sourceTree = "<group>"; };
+		E5F9847D45179049C7416A3E /* Pods-UIConfig.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIConfig.debug.xcconfig"; path = "../../Voyage/Pods/Target Support Files/Pods-UIConfig/Pods-UIConfig.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */

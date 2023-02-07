@@ -43,7 +43,7 @@ public extension UIViewController {
     func showLoading(message: String? = nil) {
         
         let lblMessage: UILabel = UILabel(text: message, color: .white, font: .title(30), alignment: .center)
-        let loading: AnimationView = Lottie.loading
+        let loading: LottieAnimationView = Lottie.loading
         
         blurEffect.contentView.addSubview(loading)
         blurEffect.contentView.addSubview(lblMessage)
@@ -70,7 +70,7 @@ public extension UIViewController {
     }
     
     func stopLoading() {
-        let loading: AnimationView = Lottie.loading
+        let loading: LottieAnimationView = Lottie.loading
         loading.stop()
         
         for sub in blurEffect.contentView.subviews {

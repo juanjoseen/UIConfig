@@ -9,9 +9,9 @@ import Foundation
 import Lottie
 
 open class Lottie {
-    public static var loading: AnimationView {
+    public static var loading: LottieAnimationView {
         get {
-            let view: AnimationView = AnimationView(name: "axkan_loading", bundle: .local)
+            let view: LottieAnimationView = LottieAnimationView(name: "axkan_loading", bundle: .local)
             view.translatesAutoresizingMaskIntoConstraints = false
             view.contentMode = .scaleAspectFit
             view.backgroundColor = .clear
@@ -21,9 +21,9 @@ open class Lottie {
         }
     }
     
-    public static var success: AnimationView {
+    public static var success: LottieAnimationView {
         get {
-            let view: AnimationView = AnimationView(name: "done", bundle: .local)
+            let view: LottieAnimationView = LottieAnimationView(name: "done", bundle: .local)
             view.translatesAutoresizingMaskIntoConstraints = false
             view.contentMode = .scaleAspectFit
             view.backgroundColor = .clear
@@ -33,9 +33,9 @@ open class Lottie {
         }
     }
     
-    public static var fail: AnimationView {
+    public static var fail: LottieAnimationView {
         get {
-            let view: AnimationView = AnimationView(name: "error", bundle: .local)
+            let view: LottieAnimationView = LottieAnimationView(name: "error", bundle: .local)
             view.translatesAutoresizingMaskIntoConstraints = false
             view.contentMode = .scaleAspectFit
             view.backgroundColor = .clear

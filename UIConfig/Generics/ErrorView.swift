@@ -16,7 +16,7 @@ class ErrorView: UIViewController {
     
     private var strTitle: String? = "Error!"
     private var message: String?
-    private var failure: AnimationView = Lottie.fail
+    private var failure: LottieAnimationView = Lottie.fail
     
     public weak var delegate: ErrorDelegate?
     
