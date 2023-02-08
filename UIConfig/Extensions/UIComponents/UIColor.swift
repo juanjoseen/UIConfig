@@ -38,6 +38,10 @@ public extension UIColor {
         return UIColor(red: 0.83, green: 0.18, blue: 0.18, alpha: 1.00)
     }
     
+    static var info: UIColor {
+        return UIColor(red: 0.01, green: 0.66, blue: 0.96, alpha: 1.00)
+    }
+    
     static var lineColor: UIColor {
         return .textColor.withAlphaComponent(0.15)
     }
