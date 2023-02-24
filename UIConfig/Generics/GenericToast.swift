@@ -66,23 +66,24 @@ public class GenericToast: UIView {
     }
     
     public func showIn(_ view: UIView) {
-        
-        view.addSubview(self)
-        
-        NSLayoutConstraint.activate([
-            heightAnchor.constraint(equalToConstant: 50),
-            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -100),
-        ])
-        
-        UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseOut) {
-            self.transform = CGAffineTransform(translationX: 0, y: 100)
-        } completion: { didFinish in
-            UIView.animate(withDuration: 0.25, delay: self.time, options: .curveEaseIn) {
-                self.transform = .identity
-            } completion: { finished in
-                self.removeFromSuperview()
+        DispatchQueue.main.async {
+            view.addSubview(self)
+            
+            NSLayoutConstraint.activate([
+                self.heightAnchor.constraint(equalToConstant: 50),
+                self.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+                self.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+                self.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -100),
+            ])
+            
+            UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseOut) {
+                self.transform = CGAffineTransform(translationX: 0, y: 100)
+            } completion: { didFinish in
+                UIView.animate(withDuration: 0.25, delay: self.time, options: .curveEaseIn) {
+                    self.transform = .identity
+                } completion: { finished in
+                    self.removeFromSuperview()
+                }
             }
         }
     }
