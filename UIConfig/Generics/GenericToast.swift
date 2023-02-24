@@ -76,10 +76,10 @@ public class GenericToast: UIView {
                 self.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -100),
             ])
             
-            UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseOut) {
+            UIView.animate(withDuration: 0.15, delay: 0.0, options: .curveEaseOut) {
                 self.transform = CGAffineTransform(translationX: 0, y: 100)
             } completion: { didFinish in
-                UIView.animate(withDuration: 0.25, delay: self.time, options: .curveEaseIn) {
+                UIView.animate(withDuration: 0.15, delay: self.time, options: .curveEaseIn) {
                     self.transform = .identity
                 } completion: { finished in
                     self.removeFromSuperview()
