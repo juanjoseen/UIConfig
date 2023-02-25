@@ -26,7 +26,10 @@ open class GenericSuccessAlert: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        view.backgroundColor = .clear
+        
+        let blur: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+        blur.translatesAutoresizingMaskIntoConstraints = false
         
         let baseView: UIView = UIView(radius: 12, color: .bgColor)
         
@@ -46,9 +49,15 @@ open class GenericSuccessAlert: UIViewController {
         baseView.addSubview(lblMessage)
         baseView.addSubview(btnOk)
         
+        view.addSubview(blur)
         view.addSubview(baseView)
         
         NSLayoutConstraint.activate([
+            blur.topAnchor.constraint(equalTo: view.topAnchor),
+            blur.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            blur.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            blur.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
             baseView.bottomAnchor.constraint(equalTo: btnOk.bottomAnchor, constant: 16),
             baseView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 80),
             baseView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
