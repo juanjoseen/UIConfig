@@ -1,39 +1,78 @@
 //
-//  GenericSuccesAlert.swift
+//  GenericAlert.swift
 //  UIConfig
 //
-//  Created by Juan Jose Elias Navarro on 17/02/23.
+//  Created by Juan Jose Elias Navarro on 26/02/23.
 //
 
 import UIKit
 
-open class GenericSuccessAlert: UIViewController {
+public enum AlertType {
+    case success
+    case error
+    case info
+    case warning
+    
+    var color: UIColor {
+        switch self {
+        case .success:
+            return .success
+        case .error:
+            return .failure
+        case .info:
+            return .info
+        case .warning:
+            return .warning
+        }
+    }
+    
+    var imageName: String {
+        switch self {
+        case .success:
+            return "checkmark.circle.fill"
+        case .error:
+            return "xmark.circle.fill"
+        case .info:
+            return "info.circle.fill"
+        case .warning:
+            return "exclamationmark.triangle.fill"
+        }
+    }
+}
+
+open class GenericAlert: UIViewController {
     var alertTitle: String!
     var message: String!
     var okTitle: String!
     var color: UIColor!
+    var type: AlertType!
     
     public weak var delegate: SuccessDelegate?
     
-    public convenience init(alertTitle: String, message: String, okTitle: String = "Accept", color: UIColor = .success) {
+    public convenience init(alertTitle: String, message: String, okTitle: String = "Accept", type: AlertType, color: UIColor? = nil) {
         self.init()
         self.alertTitle = alertTitle
         self.message = message
         self.okTitle = okTitle
-        self.color = color
-        
+        self.type = type
+        if let color: UIColor = color {
+            self.color = color
+        } else {
+            self.color = type.color
+        }
         setupUI()
     }
     
     private func setupUI() {
         view.backgroundColor = .clear
+        modalPresentationStyle = .overCurrentContext
         
         let blur: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
         blur.translatesAutoresizingMaskIntoConstraints = false
         
         let baseView: UIView = UIView(radius: 12, color: .bgColor)
         
-        let imgCheck: UIImageView = UIImageView(name: "checkmark.circle.fill", size: 90, tint: color)
+        let imgCheck: UIImageView = UIImageView(name: type.imageName, size: 90, tint: color)
         
         let lblTitle: UILabel = UILabel(text: alertTitle, color: .titleColor, font: .title(25), alignment: .center)
         lblTitle.numberOfLines = 2
