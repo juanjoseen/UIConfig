@@ -14,4 +14,11 @@ public extension DateFormatter {
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
         return dateFormatter
     }
+    
+    static var inverse: DateFormatter {
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_us")
+        dateFormatter.dateFormat = "yy/MM/dd HH:mm:ss"
+        return dateFormatter
+    }
 }
