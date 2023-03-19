@@ -123,6 +123,6 @@ open class GenericAlert: UIViewController {
     }
     
     @objc func actionOk() {
-        dismiss(animated: false)
+        delegate?.didEndSuccess()
     }
 }
