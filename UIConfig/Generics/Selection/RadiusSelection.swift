@@ -130,6 +130,17 @@ open class RadiusSelection: UIViewController {
         actionCancel()
     }
     
+    open func selectIndex(_ index: Int) {
+        for i in 0..<items.count {
+            let indexPath: IndexPath = IndexPath(row: i, section: 0)
+            if index == i {
+                tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+            } else {
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+        }
+    }
+    
     private func hideView(animated: Bool = true, completion: (() -> Void)? = nil) {
         let height: CGFloat = view.screenHeight
         let translate: CGAffineTransform = CGAffineTransform(translationX: 0, y: height)

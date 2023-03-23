@@ -78,7 +78,9 @@ class ViewController: UIViewController {
     }
     
     @objc func actionRadius() {
-        present(darkMode, animated: false)
+        present(darkMode, animated: false) {
+            self.darkMode.selectIndex(2)
+        }
     }
     
     @objc func actionMultiple() {
