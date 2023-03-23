@@ -1,38 +1,25 @@
 //
-//  RadiusSelection.swift
+//  MultipleSelection.swift
 //  UIConfig
 //
-//  Created by Juan Jose Elias Navarro on 22/03/23.
+//  Created by Juan Jose Elias Navarro on 23/03/23.
 //
 
 import UIKit
 
-open class SelectionItem {
-    open var title: String
-    open var icon: UIImage?
-    open var subTitle: String?
-    var isSelected: Bool = false
-    
-    public init(title: String, subTitle: String? = nil, icon: UIImage? = nil) {
-        self.title = title
-        self.subTitle = subTitle
-        self.icon = icon
-    }
+public protocol MultipleSelectionDelegate: AnyObject {
+    func didCancel(selection: MultipleSelection)
+    func didSelect(items: [SelectionItem], on selection: MultipleSelection)
 }
 
-public protocol RadiusDelegate: AnyObject {
-    func didCancel(selection: RadiusSelection)
-    func didSelect(item: SelectionItem, on selection: RadiusSelection)
-}
-
-open class RadiusSelection: UIViewController {
+open class MultipleSelection: UIViewController {
     
     open var items: [SelectionItem]!
     open var titleMessage: String!
     var acceptTitle: String!
     open var color: UIColor!
     
-    public weak var delegate: RadiusDelegate?
+    public weak var delegate: MultipleSelectionDelegate?
     
     private lazy var bgView: UIView = {
         let view: UIView = UIView(radius: 40, color: .systemBackground)
@@ -47,7 +34,7 @@ open class RadiusSelection: UIViewController {
         table.delegate = self
         table.dataSource = self
         table.isScrollEnabled = false
-        table.registerCell(type: RadiusCell.self)
+        table.registerCell(type: SquareCell.self)
         return table
     }()
     
@@ -59,7 +46,7 @@ open class RadiusSelection: UIViewController {
         self.titleMessage = titleMessage
         self.modalPresentationStyle = .overCurrentContext
     }
-    
+
     open override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -154,9 +141,8 @@ open class RadiusSelection: UIViewController {
     @objc private func actionAccept() {
         hideView {
             self.dismiss(animated: false) {
-                if let item: SelectionItem = self.items.first(where: { $0.isSelected }) {
-                    self.delegate?.didSelect(item: item, on: self)
-                }
+                let selected: [SelectionItem] = self.items.filter({ $0.isSelected })
+                self.delegate?.didSelect(items: selected, on: self)
             }
         }
     }
@@ -170,7 +156,7 @@ open class RadiusSelection: UIViewController {
     }
 }
 
-extension RadiusSelection: UITableViewDelegate, UITableViewDataSource {
+extension MultipleSelection: UITableViewDelegate, UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -180,12 +166,17 @@ extension RadiusSelection: UITableViewDelegate, UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell: RadiusCell = tableView.dequeueCell(withType: RadiusCell.self, for: indexPath) as? RadiusCell else {
+        guard let cell: SquareCell = tableView.dequeueCell(withType: SquareCell.self, for: indexPath) as? SquareCell else {
             return UITableViewCell()
         }
         let item: SelectionItem = itemFor(indexPath)
         cell.config(with: item, color: color)
         return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell: SquareCell = tableView.cellForRow(at: indexPath) as? SquareCell else { return }
+        cell.toggleSelection()
     }
     
     private func itemFor(_ indexPath: IndexPath) -> SelectionItem {
