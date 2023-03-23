@@ -78,11 +78,15 @@ class ViewController: UIViewController {
     }
     
     @objc func actionRadius() {
-        present(darkMode, animated: false)
+        present(darkMode, animated: false) {
+            self.darkMode.selectIndex(2)
+        }
     }
     
     @objc func actionMultiple() {
-        present(currencies, animated: false)
+        present(currencies, animated: false) {
+            self.currencies.selectIndexes([0,1])
+        }
     }
     
     @objc func actionSuccess() {
