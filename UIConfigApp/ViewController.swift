@@ -84,7 +84,9 @@ class ViewController: UIViewController {
     }
     
     @objc func actionMultiple() {
-        present(currencies, animated: false)
+        present(currencies, animated: false) {
+            self.currencies.selectIndexes([0,1])
+        }
     }
     
     @objc func actionSuccess() {

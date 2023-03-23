@@ -76,6 +76,7 @@ class SquareCell: UITableViewCell {
     }
     
     func didSelect(_ selected: Bool) {
+        item.isSelected = selected
         btnSelection.isSelected = selected
         btnSelection.tintColor = selected ? color : .textLight
     }
