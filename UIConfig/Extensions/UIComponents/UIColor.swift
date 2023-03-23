@@ -22,6 +22,7 @@ public extension UIColor {
         }
     }
     
+    /// textColor with 75% alpha
     static var textLight: UIColor {
         return UIColor.textColor.withAlphaComponent(0.75)
     }
