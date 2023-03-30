@@ -24,6 +24,7 @@ class ErrorView: UIViewController {
         self.init()
         self.strTitle = title
         self.message = message
+        modalPresentationStyle = .overCurrentContext
     }
 
     override func viewDidLoad() {
@@ -50,7 +51,6 @@ class ErrorView: UIViewController {
     
     private func configUI() {
         view.backgroundColor = .clear
-        modalPresentationStyle = .overCurrentContext
         
         let bgView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
         bgView.translatesAutoresizingMaskIntoConstraints = false

@@ -60,12 +60,12 @@ open class GenericAlert: UIViewController {
         } else {
             self.color = type.color
         }
+        modalPresentationStyle = .overCurrentContext
         setupUI()
     }
     
     private func setupUI() {
         view.backgroundColor = .clear
-        modalPresentationStyle = .overCurrentContext
         
         let blur: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
         blur.translatesAutoresizingMaskIntoConstraints = false
