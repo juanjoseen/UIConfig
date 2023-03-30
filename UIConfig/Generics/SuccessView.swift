@@ -24,6 +24,7 @@ open class SuccessView: UIViewController {
         self.init()
         self.strTitle = title
         self.message = message
+        modalPresentationStyle = .overCurrentContext
     }
 
     open override func viewDidLoad() {
@@ -50,7 +51,6 @@ open class SuccessView: UIViewController {
     
     private func configUI() {
         view.backgroundColor = .clear
-        modalPresentationStyle = .overCurrentContext
         
         let bgView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
         bgView.translatesAutoresizingMaskIntoConstraints = false

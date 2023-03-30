@@ -45,6 +45,7 @@ open class GenericSelection: UIViewController {
         self.acceptTitle = accept
         self.titleMessage = title
         self.multipleSelection = multipleSelection
+        modalPresentationStyle = .overCurrentContext
     }
 
     open override func viewDidLoad() {
@@ -65,9 +66,6 @@ open class GenericSelection: UIViewController {
     }
     
     private func configUI() {
-        view.backgroundColor = .clear
-        
-        modalPresentationStyle = .overCurrentContext
         view.backgroundColor = .clear
         
         let blurView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))

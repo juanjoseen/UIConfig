@@ -33,6 +33,7 @@ open class GenericSheet: UIViewController {
         self.message = message
         self.buttons = buttons
         self.cancelTitle = cancelTitle
+        modalPresentationStyle = .overCurrentContext
         
         configUI()
     }
@@ -69,7 +70,6 @@ open class GenericSheet: UIViewController {
     }
     
     private func configUI() {
-        modalPresentationStyle = .overCurrentContext
         view.backgroundColor = .clear
         
         let blurView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
