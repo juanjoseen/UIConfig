@@ -12,6 +12,7 @@ class SquareCell: UITableViewCell {
     lazy var btnSelection: UIButton = {
         let button: UIButton = UIButton(image: "square", isSystem: true, size: 24, color: .textLight)
         button.setImage(UIImage.system(named: "checkmark.square.fill", size: 24), for: .selected)
+        button.isUserInteractionEnabled = false
         return button
     }()
     
