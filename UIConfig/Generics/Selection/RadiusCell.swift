@@ -12,6 +12,7 @@ class RadiusCell: UITableViewCell {
     lazy var btnSelection: UIButton = {
         let button: UIButton = UIButton(image: "circle", isSystem: true, size: 24, color: .textLight)
         button.setImage(UIImage.system(named: "checkmark.circle.fill", size: 24), for: .selected)
+        button.isUserInteractionEnabled = false
         return button
     }()
     
