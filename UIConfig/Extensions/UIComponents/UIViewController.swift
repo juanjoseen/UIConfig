@@ -28,6 +28,10 @@ public extension UIViewController {
         navigationController?.popViewController(animated: animated)
     }
     
+    func showToast(type: ToastType, message: String, time: TimeInterval = 3.0) {
+        GenericToast(type: type, message: message, time: time).showIn(self.view)
+    }
+    
     func showSuccess(title: String? = nil, message: String? = nil, delegate: SuccessDelegate? = nil) {
         let successVC: SuccessView = SuccessView(title: title, message: message)
         successVC.delegate = delegate
