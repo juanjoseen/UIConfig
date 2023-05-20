@@ -81,5 +81,19 @@ class SquareCell: UITableViewCell {
         btnSelection.isSelected = selected
         btnSelection.tintColor = selected ? color : .textLight
     }
+    
+    func enable(_ enabled: Bool) {
+        if enabled {
+            lblTitle.alpha = 1.0
+            lblSubtitle.alpha = 1.0
+            btnSelection.alpha = 1.0
+            isUserInteractionEnabled = true
+        } else {
+            lblTitle.alpha = 0.5
+            lblSubtitle.alpha = 0.5
+            btnSelection.alpha = 0.5
+            isUserInteractionEnabled = false
+        }
+    }
 
 }
