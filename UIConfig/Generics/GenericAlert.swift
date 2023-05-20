@@ -67,7 +67,7 @@ open class GenericAlert: UIViewController {
     private func setupUI() {
         view.backgroundColor = .clear
         
-        let blur: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+        let blur: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
         blur.translatesAutoresizingMaskIntoConstraints = false
         
         let baseView: UIView = UIView(radius: 12, color: .bgColor)
@@ -123,6 +123,7 @@ open class GenericAlert: UIViewController {
     }
     
     @objc func actionOk() {
+        dismiss(animated: true)
         delegate?.didEndSuccess()
     }
 }
