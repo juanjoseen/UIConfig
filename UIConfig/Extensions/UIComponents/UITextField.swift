@@ -30,4 +30,29 @@ public extension UITextField {
             rightViewMode = .always
         }
     }
+    
+    func showError(_ message: String, color: UIColor = .failure) {
+        let lblError: UILabel = UILabel(text: message, color: color, font: Avenir.lightItalic(10))
+        lblError.tag = .TEXTFIELD_ERROR_TAG
+        
+        addSubview(lblError)
+        
+        NSLayoutConstraint.activate([
+            lblError.topAnchor.constraint(equalTo: bottomAnchor),
+            lblError.heightAnchor.constraint(equalToConstant: 13),
+            lblError.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .padding),
+            lblError.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .inversePadding),
+        ])
+        
+        layer.borderColor = color.cgColor
+    }
+    
+    func hideError(completion: (() -> Void)? = nil) {
+        for sub in subviews {
+            if sub.tag == .TEXTFIELD_ERROR_TAG {
+                sub.removeFromSuperview()
+            }
+        }
+        completion?()
+    }
 }
