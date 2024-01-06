@@ -31,6 +31,7 @@ open class RadiusSelection: UIViewController {
     open var titleMessage: String!
     var acceptTitle: String!
     open var color: UIColor!
+    open var tag: Int = 0
     
     public weak var delegate: RadiusDelegate?
     
@@ -78,7 +79,6 @@ open class RadiusSelection: UIViewController {
     }
     
     private func configUI() {
-        view.backgroundColor = .clear
         view.backgroundColor = .clear
         
         let blurView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
