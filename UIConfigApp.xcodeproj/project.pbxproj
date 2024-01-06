@@ -124,9 +124,9 @@
 		0DFD46DD2945083000251542 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		0DFD46DF29450CB800251542 /* Lottie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lottie.swift; sourceTree = "<group>"; };
 		3EDA039C2AC33EF000804CD9 /* HintTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintTextField.swift; sourceTree = "<group>"; };
-		64B30D4BD20DFDD7F2C319B7 /* Pods-UIConfig.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIConfig.release.xcconfig"; path = "../../GasoReports/Pods/Target Support Files/Pods-UIConfig/Pods-UIConfig.release.xcconfig"; sourceTree = "<group>"; };
+		64B30D4BD20DFDD7F2C319B7 /* Pods-UIConfig.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIConfig.release.xcconfig"; path = "../../Gaso-Mx/Pods/Target Support Files/Pods-UIConfig/Pods-UIConfig.release.xcconfig"; sourceTree = "<group>"; };
 		6977DF3E3E338FBAFD87B338 /* Pods_UIConfig.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIConfig.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		99AD669E44F54A87FF124555 /* Pods-UIConfig.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIConfig.debug.xcconfig"; path = "../../GasoReports/Pods/Target Support Files/Pods-UIConfig/Pods-UIConfig.debug.xcconfig"; sourceTree = "<group>"; };
+		99AD669E44F54A87FF124555 /* Pods-UIConfig.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIConfig.debug.xcconfig"; path = "../../Gaso-Mx/Pods/Target Support Files/Pods-UIConfig/Pods-UIConfig.debug.xcconfig"; sourceTree = "<group>"; };
 		C679724C294B947A00F6329D /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
