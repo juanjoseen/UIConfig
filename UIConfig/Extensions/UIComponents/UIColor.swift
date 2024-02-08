@@ -31,7 +31,7 @@ public extension UIColor {
     /// dark: #1B1A28
     static var bgColor: UIColor {
         return UIColor { (traits) -> UIColor in
-            return traits.userInterfaceStyle == .dark ? UIColor(red: 0.11, green: 0.10, blue: 0.16, alpha: 1.00) : UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.00)
+            return traits.userInterfaceStyle == .dark ? UIColor(red: 0.13, green: 0.15, blue: 0.17, alpha: 1.00) : UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.00)
         }
     }
     
