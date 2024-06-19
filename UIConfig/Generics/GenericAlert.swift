@@ -71,8 +71,9 @@ open class GenericAlert: UIViewController {
         blur.translatesAutoresizingMaskIntoConstraints = false
         
         let baseView: UIView = UIView(radius: 12, color: .bgColor)
+        baseView.shadow()
         
-        let imgCheck: UIImageView = UIImageView(name: type.imageName, size: 90, tint: color)
+        let imgCheck: UIImageView = UIImageView(name: type.imageName, size: 72, tint: color)
         
         let lblTitle: UILabel = UILabel(text: alertTitle, color: .titleColor, font: .title(25), alignment: .center)
         lblTitle.numberOfLines = 2
@@ -102,7 +103,7 @@ open class GenericAlert: UIViewController {
             baseView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             baseView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             
-            imgCheck.heightAnchor.constraint(equalToConstant: 90),
+            imgCheck.heightAnchor.constraint(equalToConstant: 72),
             imgCheck.widthAnchor.constraint(equalTo: imgCheck.heightAnchor),
             imgCheck.centerXAnchor.constraint(equalTo: baseView.centerXAnchor),
             imgCheck.topAnchor.constraint(equalTo: baseView.topAnchor, constant: 16),

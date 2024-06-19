@@ -49,7 +49,7 @@ class SquareCell: UITableViewCell {
         NSLayoutConstraint.activate([
             btnSelection.widthAnchor.constraint(equalToConstant: 24),
             btnSelection.centerYAnchor.constraint(equalTo: centerYAnchor),
-            btnSelection.heightAnchor.constraint(equalTo: btnSelection.widthAnchor),
+            btnSelection.heightAnchor.constraint(equalToConstant: 22),
             btnSelection.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .inversePadding),
             
             lblTitle.heightAnchor.constraint(equalToConstant: 24),
@@ -89,9 +89,9 @@ class SquareCell: UITableViewCell {
             btnSelection.alpha = 1.0
             isUserInteractionEnabled = true
         } else {
-            lblTitle.alpha = 0.5
-            lblSubtitle.alpha = 0.5
-            btnSelection.alpha = 0.5
+            lblTitle.alpha = 0.25
+            lblSubtitle.alpha = 0.25
+            btnSelection.alpha = 0.25
             isUserInteractionEnabled = false
         }
     }

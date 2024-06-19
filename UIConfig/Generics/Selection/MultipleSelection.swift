@@ -20,6 +20,7 @@ open class MultipleSelection: UIViewController {
     open var color: UIColor!
     open var minItemSelection: Int = 1
     open var maxItemSelection: Int? = nil
+    open var tag: Int = 0
     
     public weak var delegate: MultipleSelectionDelegate?
     
