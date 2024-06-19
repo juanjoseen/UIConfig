@@ -45,42 +45,48 @@ public extension UIViewController {
     }
     
     func showLoading(message: String? = nil) {
-        
-        let lblMessage: UILabel = UILabel(text: message, color: .white, font: .title(30), alignment: .center)
-        let loading: LottieAnimationView = Lottie.loading
-        
-        blurEffect.contentView.addSubview(loading)
-        blurEffect.contentView.addSubview(lblMessage)
-        
-        loading.play()
-        
-        view.addSubview(blurEffect)
-        
-        NSLayoutConstraint.activate([
-            blurEffect.topAnchor.constraint(equalTo: view.topAnchor),
-            blurEffect.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            blurEffect.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            blurEffect.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        DispatchQueue.main.async {
+            let lblMessage: UILabel = UILabel(text: message, color: .white, font: .title(30), alignment: .center)
+            let loading: LottieAnimationView = Lottie.loading
             
-            loading.heightAnchor.constraint(equalTo: loading.widthAnchor),
-            loading.bottomAnchor.constraint(equalTo: blurEffect.centerYAnchor),
-            loading.leadingAnchor.constraint(equalTo: blurEffect.leadingAnchor, constant: 64),
-            loading.trailingAnchor.constraint(equalTo: blurEffect.trailingAnchor, constant: -64),
+            blurEffect.contentView.addSubview(loading)
+            blurEffect.contentView.addSubview(lblMessage)
             
-            lblMessage.topAnchor.constraint(equalTo: loading.bottomAnchor, constant: 16),
-            lblMessage.leadingAnchor.constraint(equalTo: blurEffect.leadingAnchor, constant: 24),
-            lblMessage.trailingAnchor.constraint(equalTo: blurEffect.trailingAnchor, constant: -24),
-        ])
+            
+            loading.play()
+            
+            self.view.addSubview(blurEffect)
+            
+            NSLayoutConstraint.activate([
+                blurEffect.topAnchor.constraint(equalTo: self.view.topAnchor),
+                blurEffect.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+                blurEffect.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+                blurEffect.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+                
+                loading.heightAnchor.constraint(equalTo: loading.widthAnchor),
+                loading.bottomAnchor.constraint(equalTo: blurEffect.centerYAnchor),
+                loading.leadingAnchor.constraint(equalTo: blurEffect.leadingAnchor, constant: 64),
+                loading.trailingAnchor.constraint(equalTo: blurEffect.trailingAnchor, constant: -64),
+                
+                lblMessage.topAnchor.constraint(equalTo: loading.bottomAnchor, constant: 16),
+                lblMessage.leadingAnchor.constraint(equalTo: blurEffect.leadingAnchor, constant: 24),
+                lblMessage.trailingAnchor.constraint(equalTo: blurEffect.trailingAnchor, constant: -24),
+            ])
+        }
     }
     
     func stopLoading() {
-        let loading: LottieAnimationView = Lottie.loading
-        loading.stop()
-        
-        for sub in blurEffect.contentView.subviews {
-            sub.removeFromSuperview()
+        DispatchQueue.main.async {
+            let loading: LottieAnimationView = Lottie.loading
+            
+            loading.stop()
+            
+            
+            for sub in blurEffect.contentView.subviews {
+                sub.removeFromSuperview()
+            }
+            
+            blurEffect.removeFromSuperview()
         }
-        
-        blurEffect.removeFromSuperview()
     }
 }
