@@ -33,6 +33,11 @@ open class RadiusSelection: UIViewController {
     open var color: UIColor!
     open var tag: Int = 0
     
+    private var MAX_TABLE_HEIGHT: CGFloat {
+        let total: CGFloat = view.screenHeight
+        return total - 300
+    }
+    
     public weak var delegate: RadiusDelegate?
     
     private lazy var bgView: UIView = {
@@ -212,6 +217,8 @@ extension RadiusSelection: UITableViewDelegate, UITableViewDataSource {
         for item in self.items {
             sum += heitghForItem(item)
         }
-        return sum
+        
+        tableView.isScrollEnabled = sum >= MAX_TABLE_HEIGHT
+        return min(sum, MAX_TABLE_HEIGHT)
     }
 }

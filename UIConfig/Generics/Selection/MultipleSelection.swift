@@ -22,6 +22,13 @@ open class MultipleSelection: UIViewController {
     open var maxItemSelection: Int? = nil
     open var tag: Int = 0
     
+    private var MAX_TABLE_HEIGHT: CGFloat {
+        let total: CGFloat = view.screenHeight
+        return total - 300
+    }
+    
+    private var selectedIndexes: [Int] = []
+    
     public weak var delegate: MultipleSelectionDelegate?
     
     private lazy var bgView: UIView = {
@@ -121,12 +128,10 @@ open class MultipleSelection: UIViewController {
     }
     
     open func selectIndexes(_ indexes: [Int]) {
-        for i in 0..<items.count {
-            let indexPath: IndexPath = IndexPath(row: i, section: 0)
-            guard let cell: SquareCell = tableView.cellForRow(at: indexPath) as? SquareCell else { return }
-            cell.didSelect(indexes.contains(i))
+        selectedIndexes = indexes
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
-        blockCellsIfNeeded()
     }
     
     private func hideView(animated: Bool = true, completion: (() -> Void)? = nil) {
@@ -166,55 +171,38 @@ open class MultipleSelection: UIViewController {
             }
         }
     }
-    
-    func blockCellsIfNeeded() {
-        for index in 0..<items.count {
-            if let cell: SquareCell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? SquareCell {
-                cell.enable(true)
-            }
-        }
-        verifyMinItemSelection()
-        verifyMaxItemSelection()
-    }
-    
-    private func verifyMinItemSelection() {
-        var itemsSelected: [SelectionItem] = []
-        var indexes: [Int] = []
-        for (index, item) in items.enumerated() {
-            if item.isSelected {
-                itemsSelected.append(item)
-                indexes.append(index)
-            }
-        }
         
-        if itemsSelected.count <= minItemSelection {
-            for index in indexes {
-                if let cell: SquareCell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? SquareCell {
-                    cell.enable(false)
-                }
+    private func hasReachedMaxItems() -> Bool {
+        if let maxItemSelection = maxItemSelection {
+            return selectedIndexes.count >= maxItemSelection
+        }
+        return false
+    }
+    
+    private func hasReachMinItems() -> Bool {
+        return minItemSelection >= selectedIndexes.count
+    }
+    
+    private func shouldBeEnabled(isSelected: Bool) -> Bool {
+        if hasReachedMaxItems() {
+            return isSelected
+        } else {
+            if hasReachMinItems() {
+                return !isSelected
             }
+            return true
         }
     }
     
-    private func verifyMaxItemSelection() {
-        if let maxItemSelection = maxItemSelection {
-            var itemsSelected: [SelectionItem] = []
-            var indexes: [Int] = []
-            for (index, item) in items.enumerated() {
-                if item.isSelected {
-                    itemsSelected.append(item)
-                    indexes.append(index)
-                }
-            }
-            if itemsSelected.count >= maxItemSelection {
-                for index in 0..<items.count {
-                    if !indexes.contains(index) {
-                        if let cell: SquareCell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? SquareCell {
-                            cell.enable(false)
-                        }
-                    }
-                }
-            }
+    private func toggleCell(index: Int) {
+        
+        if selectedIndexes.contains(where: { $0 == index}) {
+            selectedIndexes.removeAll(where: { $0 == index })
+        } else {
+            selectedIndexes.append(index)
+        }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
 }
@@ -233,14 +221,15 @@ extension MultipleSelection: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         let item: SelectionItem = itemFor(indexPath)
-        cell.config(with: item, color: color)
+        let isSelected: Bool = selectedIndexes.contains(where: { $0 == indexPath.row })
+        let isEnabled: Bool = shouldBeEnabled(isSelected: isSelected)
+        
+        cell.config(with: item, color: color, isSelected: isSelected, isEnabled: isEnabled)
         return cell
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell: SquareCell = tableView.cellForRow(at: indexPath) as? SquareCell else { return }
-        cell.toggleSelection()
-        blockCellsIfNeeded()
+        toggleCell(index: indexPath.row)
     }
     
     private func itemFor(_ indexPath: IndexPath) -> SelectionItem {
@@ -256,6 +245,7 @@ extension MultipleSelection: UITableViewDelegate, UITableViewDataSource {
         for item in self.items {
             sum += heitghForItem(item)
         }
-        return sum
+        tableView.isScrollEnabled = sum >= MAX_TABLE_HEIGHT
+        return min(sum, MAX_TABLE_HEIGHT)
     }
 }

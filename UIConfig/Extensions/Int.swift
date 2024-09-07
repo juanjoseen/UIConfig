@@ -9,4 +9,5 @@ import Foundation
 
 extension Int {
     static let TEXTFIELD_ERROR_TAG = 2001
+    static let LOADING_VIEW_TAG = 240703
 }

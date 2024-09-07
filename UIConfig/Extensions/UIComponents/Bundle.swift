@@ -10,7 +10,7 @@ import Foundation
 public extension Bundle {
     static var local: Bundle {
         get {
-            return Bundle(for: Lottie.self)
+            return Bundle(for: GenericAlert.self)
         }
     }
 }

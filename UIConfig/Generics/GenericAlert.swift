@@ -40,26 +40,40 @@ public enum AlertType {
     }
 }
 
+public protocol GenericAlertDelegate: AnyObject {
+    func willShowAlert(alert: GenericAlert)
+    func didShowAlert(alert: GenericAlert)
+    func willEndShowingAlert(alert: GenericAlert)
+    func didEndShowingAlert(alert: GenericAlert)
+}
+
+public extension GenericAlertDelegate {
+    func willShowAlert(alert: GenericAlert) {}
+    func didShowAlert(alert: GenericAlert) {}
+    func willEndShowingAlert(alert: GenericAlert) {}
+    func didEndShowingAlert(alert: GenericAlert) {}
+}
+
 open class GenericAlert: UIViewController {
     var alertTitle: String!
     var message: String!
     var okTitle: String!
     var color: UIColor!
     var type: AlertType!
+    var imageColor: UIColor!
+    var alignment: NSTextAlignment!
     
-    public weak var delegate: SuccessDelegate?
+    public weak var delegate: GenericAlertDelegate?
     
-    public convenience init(alertTitle: String, message: String, okTitle: String = "Accept", type: AlertType, color: UIColor? = nil) {
+    public convenience init(alertTitle: String, message: String, textAlignment: NSTextAlignment = .center, okTitle: String = "Accept", type: AlertType, color: UIColor? = nil, imageColor: UIColor? = nil) {
         self.init()
         self.alertTitle = alertTitle
         self.message = message
         self.okTitle = okTitle
         self.type = type
-        if let color: UIColor = color {
-            self.color = color
-        } else {
-            self.color = type.color
-        }
+        self.color = color ?? type.color
+        self.imageColor = imageColor ?? type.color
+        self.alignment = textAlignment
         modalPresentationStyle = .overCurrentContext
         setupUI()
     }
@@ -73,12 +87,12 @@ open class GenericAlert: UIViewController {
         let baseView: UIView = UIView(radius: 12, color: .bgColor)
         baseView.shadow()
         
-        let imgCheck: UIImageView = UIImageView(name: type.imageName, size: 72, tint: color)
+        let imgCheck: UIImageView = UIImageView(name: type.imageName, size: 72, tint: imageColor)
         
         let lblTitle: UILabel = UILabel(text: alertTitle, color: .titleColor, font: .title(25), alignment: .center)
         lblTitle.numberOfLines = 2
         
-        let lblMessage: UILabel = UILabel(text: message, font: .regular(17), alignment: .center)
+        let lblMessage: UILabel = UILabel(text: message, font: .regular(17), alignment: self.alignment)
         lblMessage.numberOfLines = 0
         
         let btnOk: UIButton = UIButton(title: okTitle, color: .white, bgColor: color, radius: .standardRadius)
@@ -123,8 +137,27 @@ open class GenericAlert: UIViewController {
         ])
     }
     
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        delegate?.willShowAlert(alert: self)
+    }
+    
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        delegate?.didShowAlert(alert: self)
+    }
+    
+    open override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.willEndShowingAlert(alert: self)
+    }
+    
+    open override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        delegate?.didEndShowingAlert(alert: self)
+    }
+    
     @objc func actionOk() {
         dismiss(animated: true)
-        delegate?.didEndSuccess()
     }
 }
