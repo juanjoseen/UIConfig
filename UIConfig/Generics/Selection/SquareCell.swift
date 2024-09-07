@@ -64,25 +64,27 @@ class SquareCell: UITableViewCell {
         ])
     }
     
-    func config(with item: SelectionItem, color: UIColor = .systemBlue) {
+    func config(with item: SelectionItem, color: UIColor = .systemBlue, isSelected: Bool, isEnabled: Bool) {
         lblTitle.text = item.title
         lblSubtitle.text = item.subTitle
         self.item = item
         self.color = color
+        didSelect(isSelected)
+        enable(isEnabled)
     }
     
-    func toggleSelection() {
+    private func toggleSelection() {
         item.isSelected.toggle()
         didSelect(item.isSelected)
     }
     
-    func didSelect(_ selected: Bool) {
+    private func didSelect(_ selected: Bool) {
         item.isSelected = selected
         btnSelection.isSelected = selected
         btnSelection.tintColor = selected ? color : .textLight
     }
     
-    func enable(_ enabled: Bool) {
+    private func enable(_ enabled: Bool) {
         if enabled {
             lblTitle.alpha = 1.0
             lblSubtitle.alpha = 1.0

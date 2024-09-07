@@ -1,6 +1,32 @@
-.DS_Store
-Pods/
-Podfile.lock
-UIConfig.xcworkspace/xcuserdata
-UIConfigApp.xcodeproj/xcuserdata/juan.xcuserdatad/xcschemes/xcschememanagement.plist
+# Xcode
+build/DerivedData/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata/
+*.moved-aside
+*.xccheckout
 *.xcuserstate
+
+# Obj-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# CocoaPods
+# Add this line only if you decide not to check the Pods directory into source control
+Pods/
+
+# Carthage
+Carthage/Checkouts
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+
+# Code Signing
+*.cert
+*.mobileprovision
