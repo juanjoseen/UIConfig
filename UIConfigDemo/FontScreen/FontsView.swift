@@ -93,7 +93,7 @@ enum FontSections: CaseIterable {
         case .names:
             return [.avenir, .baskerville, .georgia, .helvetica, .verdana]
         case .sizes:
-            return [.title, .subtitle, .regular, .light]
+            return [.largeTitle, .title, .header, .subtitle, .regular, .light, .tiny]
         }
     }
 }
@@ -104,23 +104,35 @@ enum FontItem: String {
     case georgia
     case helvetica
     case verdana
+    case largeTitle = "Large Title"
     case title
+    case header
     case subtitle
     case regular
     case light
+    case tiny
     
     var subtitle: String? {
+        
+        let font: FontType = FontConfig.current
+        
         switch self {
         case .avenir:
             return "(Default)"
+        case .largeTitle:
+            return "\(font.fontName) - bold - 30"
         case .title:
-            return "Avenir - bold - 25"
+            return "\(font.fontName) - bold - 25"
+        case .header:
+            return "\(font.fontName) - medium - 20"
         case .subtitle:
-            return "Avenir - medium - 17"
+            return "\(font.fontName) - medium - 17"
         case .regular:
-            return "Avenir - regular - 15"
+            return "\(font.fontName) - regular - 15"
         case .light:
-            return "Avenir - light - 13"
+            return "\(font.fontName) - light - 13"
+        case .tiny:
+            return "\(font.fontName) - light - 11"
         default:
             return nil
         }

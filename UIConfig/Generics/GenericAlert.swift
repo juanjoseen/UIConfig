@@ -96,6 +96,7 @@ open class GenericAlert: UIViewController {
         lblMessage.numberOfLines = 0
         
         let btnOk: UIButton = UIButton(title: okTitle, color: .white, bgColor: color, radius: .standardRadius)
+        btnOk.titleLabel?.font = FontConfig.current.subtitle
         btnOk.addTarget(self, action: #selector(actionOk), for: .touchUpInside)
         
         baseView.addSubview(imgCheck)

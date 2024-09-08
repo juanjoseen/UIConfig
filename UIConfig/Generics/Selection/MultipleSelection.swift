@@ -82,10 +82,10 @@ open class MultipleSelection: UIViewController {
         blurView.translatesAutoresizingMaskIntoConstraints = false
         
         let btnAccept: UIButton = UIButton(title: acceptTitle, color: .white, bgColor: color, radius: .standardRadius)
-        btnAccept.titleLabel?.font = .subTitle(20)
+        btnAccept.titleLabel?.font = .subtitle(20)
         btnAccept.addTarget(self, action: #selector(actionAccept), for: .touchUpInside)
         
-        let lblTitle: UILabel = UILabel(text: titleMessage, font: .subTitle(20), alignment: .center)
+        let lblTitle: UILabel = UILabel(text: titleMessage, font: .subtitle(20), alignment: .center)
         
         let tableHeight: CGFloat = heightForTable() + 8.0
         

@@ -8,7 +8,7 @@
 import UIKit
 
 public extension UITextField {
-    convenience init(placeholder: String = "", font: UIFont = .subTitle, bgColor: UIColor = .bgColor, radius: CGFloat = 0, border: CGFloat = 0, borderColor: UIColor = .clear, padding: CGFloat = 0) {
+    convenience init(placeholder: String = "", font: UIFont = .subtitle, bgColor: UIColor = .bgColor, radius: CGFloat = 0, border: CGFloat = 0, borderColor: UIColor = .clear, padding: CGFloat = 0) {
         self.init()
         translatesAutoresizingMaskIntoConstraints = false
         self.backgroundColor = bgColor
@@ -32,7 +32,7 @@ public extension UITextField {
     }
     
     func showError(_ message: String, color: UIColor = .failure) {
-        let lblError: UILabel = UILabel(text: message, color: color, font: Avenir.lightItalic(10))
+        let lblError: UILabel = UILabel(text: message, color: color, font: FontConfig.current.lightItalic(10))
         lblError.tag = .TEXTFIELD_ERROR_TAG
         
         addSubview(lblError)

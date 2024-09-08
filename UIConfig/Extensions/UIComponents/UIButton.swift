@@ -8,12 +8,13 @@
 import UIKit
 
 public extension UIButton {
-    convenience init(title: String, color: UIColor = .systemBlue, bgColor: UIColor = .clear, isBordered: Bool = false, border: UIColor = .clear, width: CGFloat = 0.0, radius: CGFloat = 0.0) {
+    convenience init(title: String, font: UIFont = .subtitle, color: UIColor = .systemBlue, bgColor: UIColor = .clear, isBordered: Bool = false, border: UIColor = .clear, width: CGFloat = 0.0, radius: CGFloat = 0.0) {
         self.init()
         self.translatesAutoresizingMaskIntoConstraints = false
         self.setTitle(title, for: .normal)
         self.setTitleColor(color, for: .normal)
         self.backgroundColor = bgColor
+        self.titleLabel?.font = font
         if isBordered {
             self.layer.borderColor = border.cgColor
             self.layer.borderWidth = width
