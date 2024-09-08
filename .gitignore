@@ -30,3 +30,7 @@ fastlane/screenshots
 # Code Signing
 *.cert
 *.mobileprovision
+
+UIConfig-Sim.xcarchive/
+UIConfig.xcarchive/
+UICOnfig.xcframework/
