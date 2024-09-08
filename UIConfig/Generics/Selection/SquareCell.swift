@@ -17,7 +17,7 @@ class SquareCell: UITableViewCell {
     }()
     
     lazy var lblTitle: UILabel = {
-        return UILabel(font: .subTitle(20))
+        return UILabel(font: .subtitle(20))
     }()
     
     lazy var lblSubtitle: UILabel = {

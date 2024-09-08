@@ -11,7 +11,7 @@ import UIConfig
 class ItemCell: UITableViewCell {
     
     lazy var lblTitle: UILabel = {
-        return UILabel(color: .titleColor, font: .subTitle)
+        return UILabel(color: .titleColor, font: .subtitle)
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

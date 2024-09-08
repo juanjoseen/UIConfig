@@ -43,17 +43,17 @@ class ViewController: UIViewController {
     }
     
     func showSuccessAlert() {
-        let alert: GenericAlert = GenericAlert(alertTitle: "Success!!", message: "Success message for the alert, the text can grow as it need", okTitle: "Ok", type: .success, color: .systemMint)
+        let alert: GenericAlert = GenericAlert(alertTitle: "Success!!", message: "Success message for the alert, the text can grow as it need", okTitle: "Accept", type: .success, color: .success)
         present(alert, animated: false)
     }
     
     func showWarningAlert() {
-        let alert: GenericAlert = GenericAlert(alertTitle: "Warning!!", message: "Warning message for the alert, the text can grow as it need", okTitle: "Ok", type: .warning, color: .systemMint)
+        let alert: GenericAlert = GenericAlert(alertTitle: "Warning!!", message: "Warning message for the alert, the text can grow as it need", okTitle: "Accept", type: .warning, color: .warning)
         present(alert, animated: false)
     }
     
     func showErrorAlert() {
-        let alert: GenericAlert = GenericAlert(alertTitle: "Error!!", message: "Error message for the alert, the text can grow as it need", okTitle: "Ok", type: .error, color: .systemMint)
+        let alert: GenericAlert = GenericAlert(alertTitle: "Error!!", message: "Error message for the alert, the text can grow as it need", okTitle: "accept", type: .error, color: .failure)
         present(alert, animated: false)
     }
     

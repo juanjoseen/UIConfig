@@ -21,5 +21,13 @@ class FontsController: UIViewController {
 
         // Do any additional setup after loading the view.
         title = "Fonts"
+        showFontNames()
+    }
+    
+    func showFontNames() {
+        UIFont.familyNames.forEach({ familyName in
+            let fontNames = UIFont.fontNames(forFamilyName: familyName)
+            print(familyName, fontNames)
+        })
     }
 }
