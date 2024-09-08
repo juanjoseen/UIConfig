@@ -84,6 +84,10 @@ class ViewController: UIViewController {
         pushVC(FontsController())
     }
     
+    func showButtons() {
+        pushVC(ButtonsController())
+    }
+    
     func showLoadingAnimation() {
         pushVC(LoadingController())
     }
@@ -123,6 +127,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         switch item {
         case .fonts:
             showFonts()
+        case .buttons:
+            showButtons()
         case .multipleSelection:
             showMultipleSelection()
         case .singleSelection:

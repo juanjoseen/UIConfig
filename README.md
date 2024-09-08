@@ -45,20 +45,35 @@ Once installed, you can start using UIConfig to configure your UI components in 
 
 ### Button Configuration
 
+You can customize the next parameters of the button:
+- title
+- title font
+- title color
+- button's background
+- button's border
+- button's border color
+- button's border with
+
 To apply custom settings to a button:
 
 ```swift
 import UIConfig
 
-let button: UIButton = UIButton(title: "Click me", color: .systemBlue, bgColor: .clear, isBordered: true, border: .systemBlue, width: .lineHeight, radius: .standardRadius)
-button.addTarget(self, action: #selector(actionButton(_:)), for: .touchUpInside)
+// Text Buttons
+let btnSimple: UIButton = UIButton(title: "Simple button", color: .white, bgColor: .systemBlue, isBordered: false)
+let btnRounded: UIButton = UIButton(title: "Rounded button", color: .white, bgColor: .systemBlue, radius: .standardRadius)
+let btnBordered: UIButton = UIButton(title: "Bordered button", color: .systemBlue, bgColor: .clear, isBordered: true, border: .systemBlue, width: 1)
+let btnRoundedBordered: UIButton = UIButton(title: "Rounded Bordered button", color: .systemBlue, bgColor: .clear, isBordered: true, border: .systemBlue, width: 1, radius: .standardRadius)
 
-...
-
-@objc func actionButton(_ sender: UIButton) {
-     print("Button Clicked!")
-}
+// Image Buttons
+let btnProfile: UIButton = UIButton(image: "person.crop.circle.fill", isSystem: true, size: 46, color: .systemBlue)
+let btnAppStore: UIButton = UIButton(image: "app_store", isSystem: false, size: 60)
 ```
+
+<img src="https://axkan.vercel.app/imgs/wiki/buttons_light.jpg" alt="Buttons in dark mode" width="auto" height="400px">
+
+<img src="https://axkan.vercel.app/imgs/wiki/buttons_dark.jpg" alt="Buttons in dark mode" width="auto" height="400px">
+
 
 ### Label Configuration
 
