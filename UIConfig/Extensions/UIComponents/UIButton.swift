@@ -8,6 +8,17 @@
 import UIKit
 
 public extension UIButton {
+    
+    /// Create an UIButton configured with the next parameters
+    /// - Parameters:
+    ///
+    ///     - title: The text that will be shown in the button
+    ///     - font: The font used for the title, The default value is **subtitle** font style of the **FontType** protocol
+    ///     - color: The color used for the title
+    ///     - bgColor: The button's background color
+    ///     - isBordered: A boolean to show or hide a border for the button
+    ///     - border: the color used for the button's border in the case that **isBordered** is enabled
+    ///     - width: the button's border width
     convenience init(title: String, font: UIFont = .subtitle, color: UIColor = .systemBlue, bgColor: UIColor = .clear, isBordered: Bool = false, border: UIColor = .clear, width: CGFloat = 0.0, radius: CGFloat = 0.0) {
         self.init()
         self.translatesAutoresizingMaskIntoConstraints = false
