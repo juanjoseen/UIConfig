@@ -1,60 +1,51 @@
 
 # UIConfig
 
-UIConfig es una librería diseñada para simplificar la configuración y personalización de componentes de interfaz de usuario (UI) en aplicaciones iOS. Este proyecto busca brindar una manera centralizada y escalable de gestionar las configuraciones de UI en proyectos, facilitando tanto su implementación como su mantenimiento.
+UIConfig is a library designed to simplify the configuration and customization of user interface components (UI) in iOS applications. This project aims to provide a centralized and scalable way to manage UI configurations in projects, making it easier to implement and maintain.
 
-## Tabla de Contenidos
+## Table of Contents
 
-- [Características](#características)
-- [Requisitos](#requisitos)
-- [Instalación](#instalación)
-- [Uso](#uso)
-  - [Configuración de Botones](#configuración-de-botones)
-  - [Configuración de Etiquetas](#configuración-de-etiquetas)
-  - [Extensiones Disponibles](#extensiones-disponibles)
-- [Contribuciones](#contribuciones)
-- [Licencia](#licencia)
+- [Characteristics](#characteristics)
+- [Requirements](#requirements)
+- [Installing](#installing)
+- [Usage](#usage)
+  - [Button Configuration](#button-configuration)
+  - [Label Configuration](#label-configuration)
+  - [Available Extensions](#available-extensions)
+- [Contributions](#contributions)
+- [License](#license)
 
-## Características
+## Characteristics
 
-- **Modular y Reutilizable**: UIConfig permite aplicar configuraciones de UI reutilizables para componentes comunes como botones, etiquetas, vistas, y más.
-- **Centralización de Estilos**: Permite definir un estilo de UI una vez y aplicarlo en cualquier parte del proyecto, asegurando coherencia en el diseño visual.
-- **Personalización Rápida**: Cambia las propiedades visuales de los componentes fácilmente desde una configuración única.
-- **Escalabilidad**: Ideal para proyectos de todos los tamaños, desde aplicaciones pequeñas hasta proyectos más complejos.
+- **Modular and Reusable**: UIConfig allows you to apply reusable UI configurations for common components like buttons, labels, views, and more.
+- **Style Centralization**: Allows you to define a UI style once and apply it anywhere in the project, ensuring consistency in visual design.
+- **Quick Customization**: Easily change the visual properties of components from a single configuration.
+- **Scalability**: Ideal for projects of all sizes, from small applications to more complex projects.
 
-## Requisitos
+## Requirements
 
-- **Xcode** 12.0 o superior
-- **Swift** 5.0 o superior
-- **iOS** 13.0 o superior
+- **Xcode** 12.0 or higher
+- **Swift** 5.0 or higher
+- **iOS** 13.0 or higher
 
-## Instalación
+## Installing
 
-### Clonar el Repositorio
-
-Puedes clonar este repositorio utilizando el siguiente comando:
-
-```bash
-git clone https://github.com/juanjoseen/UIConfig.git
-```
-
-### Integración Manual
-
-1. Clona o descarga el proyecto.
-2. Copia el contenido del directorio `UIConfig` en tu proyecto.
-3. Importa la librería en los archivos donde planees usarla:
+1. Clone or download the project.
+2. Execute the `update_framework.sh` script to generate de `UIConfig.xcframework`.
+3. Add the `UIConfig.xcframework` to your project.
+4. Import the library into the files where you plan to use it:
 
 ```swift
 import UIConfig
 ```
 
-## Uso
+## Usage
 
-Una vez instalado, puedes comenzar a usar UIConfig para configurar tus componentes de UI de manera centralizada y consistente.
+Once installed, you can start using UIConfig to configure your UI components in a centralized and consistent manner.
 
-### Configuración de Botones
+### Button Configuration
 
-Para aplicar configuraciones personalizadas a un botón:
+To apply custom settings to a button:
 
 ```swift
 import UIConfig
@@ -69,9 +60,9 @@ button.addTarget(self, action: #selector(actionButton(_:)), for: .touchUpInside)
 }
 ```
 
-### Configuración de Etiquetas
+### Label Configuration
 
-De igual forma, puedes configurar etiquetas utilizando el módulo correspondiente de UIConfig:
+Similarly, you can configure labels using the corresponding UIConfig module:
 
 ```swift
 import UIConfig
@@ -79,14 +70,14 @@ import UIConfig
 let label: UILabel = UILabel(text: "Hello World!", color: .textColor, font: .title, alignment: .center)
 ```
 
-### Extensiones Disponibles
+### Available Extensions
 
-UIConfig incluye varias extensiones que permiten aplicar configuraciones fácilmente a los siguientes elementos:
+UIConfig includes several extensions that allow you to easily apply configurations to the following elements:
 
-- **Botones** (`UIButton`)
-- **Etiquetas** (`UILabel`)
-- **Vistas** (`UIView`)
-- **Imagenes** (`UIImageView`)
+- **Buttons** (`UIButton`)
+- **Labels** (`UILabel`)
+- **Views** (`UIView`)
+- **Images** (`UIImageView`)
 - **TextFields** (`UITextField`)
 - **CollectionViews** (`UICollectionView`)
 - **TableViews** (`UITableView`)
@@ -94,17 +85,17 @@ UIConfig incluye varias extensiones que permiten aplicar configuraciones fácilm
 - **Colors** (`UIColor`)
 - **Controllers** (`UIController`)
   
-Cada una de estas extensiones incluye métodos convenientes para aplicar configuraciones de estilo predefinidas o personalizadas.
+Each of these extensions includes convenient methods for applying predefined or custom style settings.
 
-## Contribuciones
+## Contributions
 
-Las contribuciones a UIConfig son bienvenidas. Si tienes ideas para nuevas características o mejoras, por favor sigue estos pasos:
+Contributions to UIConfig are welcome. If you have ideas for new features or improvements, please follow these steps:
 
-1. Haz un fork del proyecto.
-2. Crea una nueva rama (`git checkout -b feature-nueva-funcionalidad`).
-3. Realiza tus cambios y haz commit de los mismos (`git commit -m 'Añadir nueva funcionalidad'`).
-4. Envía tu Pull Request.
+1. Fork the project.
+2. Create a new branch (`git checkout -b feature-new-feature`).
+3. Make your changes and commit them (`git commit -m 'Add new feature'`).
+4. Submit your Pull Request.
 
-## Licencia
+## License
 
-Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo [LICENSE](./LICENSE) para más detalles.
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
