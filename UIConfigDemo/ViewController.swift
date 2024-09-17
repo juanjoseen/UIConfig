@@ -91,6 +91,10 @@ class ViewController: UIViewController {
     func showLoadingAnimation() {
         pushVC(LoadingController())
     }
+    
+    func showPageIndicator() {
+        pushVC(ShowIndicatorDemo())
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -141,6 +145,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             showErrorAlert()
         case .loadingAnimation:
             showLoadingAnimation()
+        case .pageIndicator:
+            showPageIndicator()
         default:
             return
         }
@@ -165,7 +171,7 @@ enum TableSection: String, CaseIterable {
     var items: [TableItem] {
         switch self {
         case .basicUI:
-            return [.fonts, .labels, .buttons]
+            return [.fonts, .labels, .buttons, .pageIndicator]
         case .alerts:
             return [.successAlert, .warningAlert, .errorAlert, .singleSelection, .multipleSelection]
         case .animations:
@@ -178,6 +184,7 @@ enum TableItem: String {
     case fonts = "Fonts"
     case labels = "Labels"
     case buttons = "Buttons"
+    case pageIndicator = "Page Indicator"
     case successAlert = "Success Alert"
     case warningAlert = "Warning Alert"
     case errorAlert = "Error Alert"

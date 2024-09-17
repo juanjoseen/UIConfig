@@ -1,4 +1,3 @@
-
 # UIConfig
 
 UIConfig is a library designed to simplify the configuration and customization of user interface components (UI) in iOS applications. This project aims to provide a centralized and scalable way to manage UI configurations in projects, making it easier to implement and maintain.
@@ -11,6 +10,7 @@ UIConfig is a library designed to simplify the configuration and customization o
 - [Usage](#usage)
   - [Button Configuration](#button-configuration)
   - [Label Configuration](#label-configuration)
+  - [Large Page Indicator](#large-page-indicator)
   - [Available Extensions](#available-extensions)
 - [Contributions](#contributions)
 - [License](#license)
@@ -46,6 +46,7 @@ Once installed, you can start using UIConfig to configure your UI components in 
 ### Button Configuration
 
 You can customize the next parameters of the button:
+
 - title
 - title font
 - title color
@@ -74,7 +75,6 @@ let btnAppStore: UIButton = UIButton(image: "app_store", isSystem: false, size: 
 
 <img src="https://axkan.vercel.app/imgs/wiki/buttons_dark.jpg" alt="Buttons in dark mode" width="auto" height="400px">
 
-
 ### Label Configuration
 
 Similarly, you can configure labels using the corresponding UIConfig module:
@@ -83,6 +83,24 @@ Similarly, you can configure labels using the corresponding UIConfig module:
 import UIConfig
 
 let label: UILabel = UILabel(text: "Hello World!", color: .textColor, font: .title, alignment: .center)
+```
+
+### Large Page Indicator
+
+A larger version of an UIPageControl with some extra notifications
+
+```swift
+import UIConfig
+
+let pageIndicator: LargePageIndicator = LargePageIndicator(numberOfPages: 6)
+
+...
+
+indicator.increasePage()
+
+...
+
+indicator.decreasePage()
 ```
 
 ### Available Extensions
@@ -99,7 +117,7 @@ UIConfig includes several extensions that allow you to easily apply configuratio
 - **Fonts** (`UIFont`)
 - **Colors** (`UIColor`)
 - **Controllers** (`UIController`)
-  
+
 Each of these extensions includes convenient methods for applying predefined or custom style settings.
 
 ## Contributions
