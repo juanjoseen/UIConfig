@@ -35,4 +35,16 @@ public extension UIView {
         self.layer.shadowRadius = radius
         self.layer.shadowOpacity = opacity
     }
+    
+    func addFadeAnimation() {
+        let animation = CABasicAnimation(keyPath: #keyPath(CALayer.opacity))
+        animation.fromValue = 0.5
+        animation.toValue = 1.0
+        animation.duration = 1.0
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animation.autoreverses = true
+        animation.repeatCount = .infinity
+        
+        self.layer.add(animation, forKey: "fade")
+    }
 }
