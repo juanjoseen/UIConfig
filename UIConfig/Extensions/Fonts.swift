@@ -54,36 +54,42 @@ extension FontType {
         }
     }
     
+    /// default value: Bold 25
     public var title: UIFont {
         get {
             return bold(25)
         }
     }
     
+    /// default value: semiBold 20
     public var header: UIFont {
         get {
             return semiBold(20)
         }
     }
     
+    /// default value: semiBold 17
     public var subtitle: UIFont {
         get {
             return semiBold(17)
         }
     }
     
+    /// default value: regular 15
     public var regular: UIFont {
         get {
             return regular(15)
         }
     }
     
+    /// default value: light 13
     public var light: UIFont {
         get {
             return light(13)
         }
     }
     
+    /// default value: light 11
     public var tiny: UIFont {
         get {
             return light(11)
