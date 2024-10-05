@@ -60,4 +60,20 @@ public extension UIViewController {
             }
         }
     }
+    
+    func showSuccessBannerAlert(title: String, action: BannerAction? = nil) {
+        BannerAlert.success(title: title, icon: Icon(name: "checkmark.circle.fill", isSystemImage: true), action: action).show(in: self.view)
+    }
+    
+    func showInfoBannerAlert(title: String, action: BannerAction? = nil) {
+        BannerAlert.info(title: title, icon: Icon(name: "info.circle.fill", isSystemImage: true), action: action).show(in: self.view)
+    }
+    
+    func showWarningBannerAlert(title: String, action: BannerAction? = nil) {
+        BannerAlert.warning(title: title, icon: Icon(name: "exclamationmark.triangle.fill", isSystemImage: true), action: action).show(in: self.view)
+    }
+    
+    func showErrorBannerAlert(title: String, action: BannerAction? = nil) {
+        BannerAlert.error(title: title, icon: Icon(name: "xmark.circle.fill", isSystemImage: true), action: action).show(in: self.view)
+    }
 }
