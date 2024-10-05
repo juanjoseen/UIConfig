@@ -11,6 +11,7 @@ UIConfig is a library designed to simplify the configuration and customization o
   - [Button Configuration](#button-configuration)
   - [Label Configuration](#label-configuration)
   - [Large Page Indicator](#large-page-indicator)
+  - [Banner Alerts](#banner-alerts)
   - [Available Extensions](#available-extensions)
 - [Contributions](#contributions)
 - [License](#license)
@@ -101,6 +102,95 @@ indicator.increasePage()
 ...
 
 indicator.decreasePage()
+```
+
+### Banner Alerts
+
+You can use the baner alerts included in UIConfig, we added 4 pre-build banner alerts: Success, Info, Warning & Error Banner Alerts
+Here's how you can use them:
+
+```swift
+import UIConfig
+
+class TaskController: UIViewController {
+...
+
+func taskDidSucceed() {
+    showSuccessBannerAlert(title: "This is a success banner alert message") {
+        let alert: UIAlertController = UIAlertController(title: "Success!", message: "You tapped into the success banner alert", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        self.present(alert, animated: true)
+    }
+}
+
+```
+
+
+```swift
+import UIConfig
+
+class TaskController: UIViewController {
+...
+
+func showInfoAlert() {
+    showInfoBannerAlert(title: "This is an info banner alert message") {
+        let alert: UIAlertController = UIAlertController(title: "Info!", message: "You tapped into the info banner alert", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        self.present(alert, animated: true)
+    }
+}
+
+```
+
+
+```swift
+import UIConfig
+
+class TaskController: UIViewController {
+...
+
+func showWarningAlert() {
+    showWarningBannerAlert(title: "This is a warning banner alert message!") {
+        let alert: UIAlertController = UIAlertController(title: "Warning!", message: "You tapped into the warning banner alert", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        self.present(alert, animated: true)
+    }
+}
+
+```
+
+
+```swift
+import UIConfig
+
+class TaskController: UIViewController {
+...
+
+func taskDidFail() {
+    showErrorBannerAlert(title: "This is an error banner alert message!") {
+        let alert: UIAlertController = UIAlertController(title: "Error!", message: "You tapped into the error banner alert", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        self.present(alert, animated: true)
+    }
+}
+
+```
+
+of course you can create your own banner alert with your style, like this:
+
+```swift
+import UIConfig
+
+class TaskController: UIViewController {
+...
+
+    func showCustomAlert() {
+        let alert: BannerAlert = BannerAlert(title: "Banner alert title!", icon: Icon(name: "bookmark.fill", isSystemImage: true), color: .systemPurple, titleColor: .white) {
+            print("User did tap into the banner alert!")
+        }
+        alert.show(in: self.view, timeout: 3.0)
+    }
+
 ```
 
 ### Available Extensions

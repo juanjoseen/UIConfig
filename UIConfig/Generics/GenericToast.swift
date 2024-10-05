@@ -48,7 +48,7 @@ public class GenericToast: UIView {
     public convenience init(type: ToastType, message: String, time: TimeInterval = 3.0) {
         self.init()
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.layer.cornerRadius = 12
+        self.layer.cornerRadius = 10
         self.type = type
         self.message = message
         self.time = time

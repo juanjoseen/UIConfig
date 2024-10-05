@@ -95,6 +95,38 @@ class ViewController: UIViewController {
     func showPageIndicator() {
         pushVC(ShowIndicatorDemo())
     }
+    
+    func showSuccessBannerAlert() {
+        showSuccessBannerAlert(title: "This is a success banner alert message") {
+            let alert: UIAlertController = UIAlertController(title: "Success!", message: "You tapped into the success banner alert", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    func showInfoBannerAlert() {
+        showInfoBannerAlert(title: "This is an info banner alert message") {
+            let alert: UIAlertController = UIAlertController(title: "Info!", message: "You tapped into the info banner alert", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    func showWarningBannerAlert() {
+        showWarningBannerAlert(title: "This is a warning banner alert message!") {
+            let alert: UIAlertController = UIAlertController(title: "Warning!", message: "You tapped into the warning banner alert", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    func showErrorBannerAlert() {
+        showErrorBannerAlert(title: "This is an error banner alert message!") {
+            let alert: UIAlertController = UIAlertController(title: "Error!", message: "You tapped into the error banner alert", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(alert, animated: true)
+        }
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -147,6 +179,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             showLoadingAnimation()
         case .pageIndicator:
             showPageIndicator()
+        case .successBannerAlert:
+            showSuccessBannerAlert()
+        case .infoBannerAlert:
+            showInfoBannerAlert()
+        case .warningBannerAlert:
+            showWarningBannerAlert()
+        case .errorBannerAlert:
+            showErrorBannerAlert()
         default:
             return
         }
@@ -166,6 +206,7 @@ extension ViewController: MultipleSelectionDelegate {
 enum TableSection: String, CaseIterable {
     case basicUI = "Basic UI"
     case alerts = "Alerts"
+    case banner = "Banner Alerts"
     case animations = "Animations"
     
     var items: [TableItem] {
@@ -174,6 +215,8 @@ enum TableSection: String, CaseIterable {
             return [.fonts, .labels, .buttons, .pageIndicator]
         case .alerts:
             return [.successAlert, .warningAlert, .errorAlert, .singleSelection, .multipleSelection]
+        case .banner:
+            return [.successBannerAlert, .infoBannerAlert, .warningBannerAlert, .errorBannerAlert]
         case .animations:
             return [.loadingAnimation, .shimmerAnimation]
         }
@@ -188,6 +231,10 @@ enum TableItem: String {
     case successAlert = "Success Alert"
     case warningAlert = "Warning Alert"
     case errorAlert = "Error Alert"
+    case successBannerAlert = "Success Banner Alert"
+    case warningBannerAlert = "Warning Banner Alert"
+    case errorBannerAlert = "Error Banner Alert"
+    case infoBannerAlert = "Info Banner Alert"
     case singleSelection = "Single Selection"
     case multipleSelection = "Multiple Selection"
     case loadingAnimation = "Loading Animation"
