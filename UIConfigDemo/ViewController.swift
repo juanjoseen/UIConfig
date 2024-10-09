@@ -127,6 +127,17 @@ class ViewController: UIViewController {
             self.present(alert, animated: true)
         }
     }
+    
+    func showCustomBannerAlert() {
+        let icon: Icon = Icon(name: "bookmark.fill", isSystemImage: true)
+        let bannerAlert: BannerAlert = BannerAlert(title: "This banner won't hide automatically", icon: icon, color: .systemPurple, titleColor: .white) {
+            let alert: UIAlertController = UIAlertController(title: "Alert", message: "You tapped into the custom banner alert", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(alert, animated: true)
+        }
+        bannerAlert.autoHide = false
+        bannerAlert.show(in: self.view)
+    }
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -187,6 +198,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             showWarningBannerAlert()
         case .errorBannerAlert:
             showErrorBannerAlert()
+        case .customBannerAlert:
+            showCustomBannerAlert()
         default:
             return
         }
@@ -216,7 +229,7 @@ enum TableSection: String, CaseIterable {
         case .alerts:
             return [.successAlert, .warningAlert, .errorAlert, .singleSelection, .multipleSelection]
         case .banner:
-            return [.successBannerAlert, .infoBannerAlert, .warningBannerAlert, .errorBannerAlert]
+            return [.successBannerAlert, .infoBannerAlert, .warningBannerAlert, .errorBannerAlert, .customBannerAlert]
         case .animations:
             return [.loadingAnimation, .shimmerAnimation]
         }
@@ -235,6 +248,7 @@ enum TableItem: String {
     case warningBannerAlert = "Warning Banner Alert"
     case errorBannerAlert = "Error Banner Alert"
     case infoBannerAlert = "Info Banner Alert"
+    case customBannerAlert = "Custom Banner Alert"
     case singleSelection = "Single Selection"
     case multipleSelection = "Multiple Selection"
     case loadingAnimation = "Loading Animation"

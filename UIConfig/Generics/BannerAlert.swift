@@ -16,8 +16,18 @@ public class BannerAlert: UIView {
     private var color: UIColor = .bgColor
     private var titleColor: UIColor = .titleColor
     private var action: BannerAction?
-    
     private var timer: Timer?
+    private var padding: CGFloat = 48
+    
+    /**
+     Determinate if the banner alert will hide automatically after the time specified in timeout. Default value: true
+     */
+    public var autoHide: Bool = true
+    
+    /**
+     Determinate the time to hide automatically the banner if autoHide = true
+     */
+    public var timeout: TimeInterval = 5.0
     
     lazy var lblTitle: UILabel = {
         return UILabel(text: self.title, color: self.titleColor, font: .subtitle)
@@ -31,7 +41,7 @@ public class BannerAlert: UIView {
         return view
     }()
     
-    convenience init(title: String, icon: Icon? = nil, color: UIColor = .bgColor, titleColor: UIColor = .titleColor, action: BannerAction? = nil) {
+    public convenience init(title: String, icon: Icon? = nil, color: UIColor = .bgColor, titleColor: UIColor = .titleColor, action: BannerAction? = nil) {
         self.init()
         self.title = title
         self.icon = icon
@@ -106,7 +116,7 @@ public class BannerAlert: UIView {
         return BannerAlert(title: title, icon: icon, color: .info, titleColor: .white, action: action)
     }
     
-    public func show(in view: UIView, timeout: TimeInterval = 5.0) {
+    public func show(in view: UIView) {
         view.addSubview(self)
         
         NSLayoutConstraint.activate([
@@ -116,7 +126,7 @@ public class BannerAlert: UIView {
             trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: .padding(-1)),
         ])
         
-        let padding: CGFloat = view.safeAreaInsets.top + 48
+        self.padding = view.safeAreaInsets.top + 48
         self.transform = CGAffineTransform(translationX: 0, y: -padding)
         
         DispatchQueue.main.async { [weak self] in
@@ -124,21 +134,23 @@ public class BannerAlert: UIView {
                 self?.transform = .identity
             } completion: { finished in
                 // Banner alert is showed and start a timer to hide it
-                self?.startTimer(timeout: timeout, padding: padding)
+                self?.startTimer()
             }
         }
     }
     
-    private func startTimer(timeout: TimeInterval, padding: CGFloat) {
-        self.timer = Timer.scheduledTimer(timeInterval: timeout, target: self, selector: #selector(self.actionHideAlert), userInfo: ["padding": padding], repeats: false)
+    private func startTimer() {
+        if autoHide {
+            self.timer = Timer.scheduledTimer(timeInterval: timeout, target: self, selector: #selector(self.actionHideAlert), userInfo: nil, repeats: false)
+        }
     }
     
     @objc private func actionHideAlert() {
-        guard let context = timer?.userInfo as? [String: CGFloat] else { return }
         timer?.invalidate()
         timer = nil
         
-        let padding: CGFloat = context["padding", default: 48]
+        let padding: CGFloat = self.padding
+        
         DispatchQueue.main.async { [weak self] in
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn) {
                 self?.transform = CGAffineTransform(translationX: 0, y: -padding)
