@@ -75,7 +75,7 @@ open class GenericSheet: UIViewController {
         let blurView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
         blurView.translatesAutoresizingMaskIntoConstraints = false
         
-        let btnCancel: UIButton = UIButton(title: cancelTitle, color: .white, bgColor: .systemRed, radius: .standardRadius)
+        let btnCancel: UIButton = UIButton(title: cancelTitle, color: .white, bgColor: .systemRed, radius: .buttonRadius)
         btnCancel.addTarget(self, action: #selector(actionCancel), for: .touchUpInside)
         
         let lblTitle: UILabel = UILabel(text: titleMessage, font: .title(25), alignment: .center)
@@ -87,7 +87,7 @@ open class GenericSheet: UIViewController {
         stackView.spacing = .padding
         
         for (index, button) in buttons.enumerated() {
-            let btnOption: UIButton = UIButton(title: button, color: .white, bgColor: .systemBlue, radius: .standardRadius)
+            let btnOption: UIButton = UIButton(title: button, color: .white, bgColor: .systemBlue, radius: .buttonRadius)
             btnOption.tag = index
             btnOption.addTarget(self, action: #selector(actionOption(_:)), for: .touchUpInside)
             stackView.addArrangedSubview(btnOption)
@@ -109,21 +109,22 @@ open class GenericSheet: UIViewController {
             bgView.bottomAnchor.constraint(equalTo: blurView.bottomAnchor),
             bgView.leadingAnchor.constraint(equalTo: blurView.leadingAnchor),
             bgView.trailingAnchor.constraint(equalTo: blurView.trailingAnchor),
-            bgView.topAnchor.constraint(equalTo: lblTitle.topAnchor, constant: .inversePadding * 2.0),
+            bgView.topAnchor.constraint(equalTo: lblTitle.topAnchor, constant: .padding(-2)),
             
             btnCancel.heightAnchor.constraint(equalToConstant: .buttonHeight),
-            btnCancel.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding * 1.5),
-            btnCancel.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .inversePadding * 1.5),
-            btnCancel.bottomAnchor.constraint(equalTo: blurView.safeAreaLayoutGuide.bottomAnchor, constant: .inversePadding),
+            btnCancel.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding(1.5)),
+            btnCancel.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .padding(-1.5)),
+            btnCancel.bottomAnchor.constraint(equalTo: blurView.safeAreaLayoutGuide.bottomAnchor, constant: .padding(-1)),
             
             stackView.heightAnchor.constraint(equalToConstant: CGFloat(buttons.count) * 60.0),
-            stackView.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding * 1.5),
-            stackView.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .inversePadding * 1.5),
-            stackView.bottomAnchor.constraint(equalTo: btnCancel.topAnchor, constant: .inversePadding * 1.5),
+            stackView.bottomAnchor.constraint(equalTo: btnCancel.topAnchor, constant: .padding(-1.5)),
+            stackView.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding(1.5)),
+            stackView.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .padding(-1.5)),
+            
             
             lblTitle.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding),
-            lblTitle.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .inversePadding),
-            lblTitle.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: .inversePadding * 2.0),
+            lblTitle.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: .padding(-2)),
+            lblTitle.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .padding(-1)),
         ])
     }
     

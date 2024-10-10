@@ -60,9 +60,9 @@ class ViewController: UIViewController {
     func showMultipleSelection() {
         var items: [SelectionItem] = []
         for i in 0...20 {
-            items.append(SelectionItem(title: String(format: "Option %d", i)))
+            items.append(SelectionItem(title: String(format: "Option %d", i), icon: Icon(name: "document", isSystemImage: true)))
         }
-        let multipleSelection: MultipleSelection = MultipleSelection(with: items, titleMessage: "Multiple Selection")
+        let multipleSelection: MultipleSelection = MultipleSelection(with: items, title: "Multiple Selection", message: "You must select at least one option and a maximum of 5.")
         multipleSelection.minItemSelection = 1
         multipleSelection.maxItemSelection = 5
         multipleSelection.delegate = self
@@ -74,9 +74,9 @@ class ViewController: UIViewController {
     func showSimpleSelection() {
         var items: [SelectionItem] = []
         for i in 0...20 {
-            items.append(SelectionItem(title: String(format: "Option %d", i)))
+            items.append(SelectionItem(title: String(format: "Option %d", i), subTitle: "subtitle \(i)", icon: Icon(name: "folder", isSystemImage: true)))
         }
-        let simpleSelection: RadiusSelection = RadiusSelection(with: items, titleMessage: "Single Selection")
+        let simpleSelection: RadiusSelection = RadiusSelection(with: items, title: "Single Selection", message: "You must select only one option!", color: .systemGreen)
         present(simpleSelection, animated: false)
     }
 
@@ -220,6 +220,7 @@ enum TableSection: String, CaseIterable {
     case basicUI = "Basic UI"
     case alerts = "Alerts"
     case banner = "Banner Alerts"
+    case sheets = "Selection Sheets"
     case animations = "Animations"
     
     var items: [TableItem] {
@@ -227,9 +228,11 @@ enum TableSection: String, CaseIterable {
         case .basicUI:
             return [.fonts, .labels, .buttons, .pageIndicator]
         case .alerts:
-            return [.successAlert, .warningAlert, .errorAlert, .singleSelection, .multipleSelection]
+            return [.successAlert, .warningAlert, .errorAlert]
         case .banner:
             return [.successBannerAlert, .infoBannerAlert, .warningBannerAlert, .errorBannerAlert, .customBannerAlert]
+        case .sheets:
+            return [.singleSelection, .multipleSelection]
         case .animations:
             return [.loadingAnimation, .shimmerAnimation]
         }

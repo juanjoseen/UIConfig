@@ -26,9 +26,9 @@ class ButtonsView: UIView {
         
         // Text Buttons
         let btnSimple: UIButton = UIButton(title: "Simple button", color: .white, bgColor: .systemBlue, isBordered: false)
-        let btnRounded: UIButton = UIButton(title: "Rounded button", color: .white, bgColor: .systemBlue, radius: .standardRadius)
+        let btnRounded: UIButton = UIButton(title: "Rounded button", color: .white, bgColor: .systemBlue, radius: .buttonRadius)
         let btnBordered: UIButton = UIButton(title: "Bordered button", color: .systemBlue, bgColor: .clear, isBordered: true, border: .systemBlue, width: 1)
-        let btnRoundedBordered: UIButton = UIButton(title: "Rounded Bordered button", color: .systemBlue, bgColor: .clear, isBordered: true, border: .systemBlue, width: 1, radius: .standardRadius)
+        let btnRoundedBordered: UIButton = UIButton(title: "Rounded Bordered button", color: .systemBlue, bgColor: .clear, isBordered: true, border: .systemBlue, width: 1, radius: .buttonRadius)
         
         // Image Buttons
         let btnProfile: UIButton = UIButton(image: "person.crop.circle.fill", isSystem: true, size: 46, color: .systemBlue)

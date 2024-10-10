@@ -26,6 +26,13 @@ class SquareCell: UITableViewCell {
         return label
     }()
     
+    lazy var imgIcon: UIImageView = {
+        let imageView: UIImageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     private var color: UIColor!
     private var item: SelectionItem!
 
@@ -48,14 +55,13 @@ class SquareCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             btnSelection.widthAnchor.constraint(equalToConstant: 24),
-            btnSelection.centerYAnchor.constraint(equalTo: centerYAnchor),
             btnSelection.heightAnchor.constraint(equalToConstant: 22),
-            btnSelection.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .inversePadding),
+            btnSelection.centerYAnchor.constraint(equalTo: centerYAnchor),
+            btnSelection.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .padding(-1)),
             
             lblTitle.heightAnchor.constraint(equalToConstant: 24),
             lblTitle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            lblTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .padding),
-            lblTitle.trailingAnchor.constraint(equalTo: btnSelection.leadingAnchor, constant: .inversePadding),
+            lblTitle.trailingAnchor.constraint(equalTo: btnSelection.leadingAnchor, constant: .padding(-1)),
             
             lblSubtitle.topAnchor.constraint(equalTo: lblTitle.bottomAnchor),
             lblSubtitle.leadingAnchor.constraint(equalTo: lblTitle.leadingAnchor),
@@ -65,10 +71,28 @@ class SquareCell: UITableViewCell {
     }
     
     func config(with item: SelectionItem, color: UIColor = .systemBlue, isSelected: Bool, isEnabled: Bool) {
-        lblTitle.text = item.title
-        lblSubtitle.text = item.subTitle
         self.item = item
         self.color = color
+        lblTitle.text = item.title
+        lblSubtitle.text = item.subTitle
+        
+        if let icon: Icon = item.icon {
+            imgIcon.image = icon.image
+            imgIcon.tintColor = color
+            
+            contentView.addSubview(imgIcon)
+            
+            NSLayoutConstraint.activate([
+                imgIcon.widthAnchor.constraint(equalToConstant: 24),
+                imgIcon.heightAnchor.constraint(equalTo: imgIcon.widthAnchor),
+                imgIcon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+                imgIcon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .padding),
+                lblTitle.leadingAnchor.constraint(equalTo: imgIcon.trailingAnchor, constant: .padding(0.5)),
+            ])
+        } else {
+            lblTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .padding).isActive = true
+        }
+        
         didSelect(isSelected)
         enable(isEnabled)
     }
@@ -85,15 +109,12 @@ class SquareCell: UITableViewCell {
     }
     
     private func enable(_ enabled: Bool) {
+        let items: [UIView] = [imgIcon, lblTitle, lblSubtitle, btnSelection]
         if enabled {
-            lblTitle.alpha = 1.0
-            lblSubtitle.alpha = 1.0
-            btnSelection.alpha = 1.0
+            items.forEach({ $0.alpha = 1.0 })
             isUserInteractionEnabled = true
         } else {
-            lblTitle.alpha = 0.25
-            lblSubtitle.alpha = 0.25
-            btnSelection.alpha = 0.25
+            items.forEach({ $0.alpha = 0.25 })
             isUserInteractionEnabled = false
         }
     }
