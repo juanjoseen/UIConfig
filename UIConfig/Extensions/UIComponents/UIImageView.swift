@@ -20,6 +20,13 @@ public extension UIImageView {
         self.tintColor = tint
     }
     
+    convenience init(icon: Icon, tint: UIColor = .textColor) {
+        self.init()
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.image = icon.image
+        self.tintColor = tint
+    }
+    
     /// Cache for the downloaded images.
     var imageCache: NSCache<AnyObject, UIImage> {
         ImageCache.shared.cache
