@@ -41,7 +41,7 @@ public extension UITextField {
             lblError.topAnchor.constraint(equalTo: bottomAnchor),
             lblError.heightAnchor.constraint(equalToConstant: 13),
             lblError.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .padding),
-            lblError.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .inversePadding),
+            lblError.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .padding(-1)),
         ])
         
         layer.borderColor = color.cgColor

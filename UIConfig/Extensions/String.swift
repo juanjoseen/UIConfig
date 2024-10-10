@@ -5,7 +5,7 @@
 //  Created by Juan Jose Elias Navarro on 10/12/22.
 //
 
-import Foundation
+import UIKit
 
 public extension String {
     var localized: String {
@@ -17,5 +17,13 @@ public extension String {
         
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: self)
+    }
+    
+    func textWidth(for font: UIFont) -> CGFloat {
+        return self.size(withAttributes: [.font: font]).width
+    }
+    
+    func textHeight(for font: UIFont) -> CGFloat {
+        return self.size(withAttributes: [.font: font]).height
     }
 }

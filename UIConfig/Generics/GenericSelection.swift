@@ -71,7 +71,7 @@ open class GenericSelection: UIViewController {
         let blurView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
         blurView.translatesAutoresizingMaskIntoConstraints = false
         
-        let btnAccept: UIButton = UIButton(title: acceptTitle, color: .white, bgColor: .success, radius: .standardRadius)
+        let btnAccept: UIButton = UIButton(title: acceptTitle, color: .white, bgColor: .success, radius: .buttonRadius)
         btnAccept.addTarget(self, action: #selector(actionAccept), for: .touchUpInside)
         
         let lblTitle: UILabel = UILabel(text: titleMessage, font: .title(25), alignment: .center)
@@ -97,21 +97,21 @@ open class GenericSelection: UIViewController {
             bgView.bottomAnchor.constraint(equalTo: blurView.bottomAnchor),
             bgView.leadingAnchor.constraint(equalTo: blurView.leadingAnchor),
             bgView.trailingAnchor.constraint(equalTo: blurView.trailingAnchor),
-            bgView.topAnchor.constraint(equalTo: lblTitle.topAnchor, constant: .inversePadding * 2.0),
+            bgView.topAnchor.constraint(equalTo: lblTitle.topAnchor, constant: .padding(-2)),
             
             btnAccept.heightAnchor.constraint(equalToConstant: .buttonHeight),
-            btnAccept.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding * 1.5),
-            btnAccept.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .inversePadding * 1.5),
-            btnAccept.bottomAnchor.constraint(equalTo: blurView.safeAreaLayoutGuide.bottomAnchor, constant: .inversePadding),
+            btnAccept.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding(1.5)),
+            btnAccept.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .padding(-1.5)),
+            btnAccept.bottomAnchor.constraint(equalTo: blurView.safeAreaLayoutGuide.bottomAnchor, constant: .padding(-1)),
             
             stackView.heightAnchor.constraint(equalToConstant: CGFloat(options.count) * 60.0),
-            stackView.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding * 1.5),
-            stackView.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .inversePadding * 1.5),
-            stackView.bottomAnchor.constraint(equalTo: btnAccept.topAnchor, constant: .inversePadding * 1.5),
+            stackView.bottomAnchor.constraint(equalTo: btnAccept.topAnchor, constant: .padding(-1.5)),
+            stackView.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding(1.5)),
+            stackView.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .padding(-1.5)),
             
             lblTitle.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding),
-            lblTitle.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .inversePadding),
-            lblTitle.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: .inversePadding * 2.0),
+            lblTitle.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: .padding(-2)),
+            lblTitle.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .padding(-1))
         ])
     }
     
@@ -181,7 +181,7 @@ open class GenericSelection: UIViewController {
     }
     
     private func getSelectionButton(title: String, isMultiple: Bool, index: Int) -> UIButton {
-        let btnOption: UIButton = UIButton(title: title, color: .white, bgColor: .systemBlue, radius: .standardRadius)
+        let btnOption: UIButton = UIButton(title: title, color: .white, bgColor: .systemBlue, radius: .buttonRadius)
         btnOption.tag = index
         btnOption.addTarget(self, action: #selector(actionOption(_:)), for: .touchUpInside)
         
@@ -262,10 +262,10 @@ open class GenericSelection: UIViewController {
         button.addSubview(image)
         
         NSLayoutConstraint.activate([
-            image.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: .inversePadding),
-            image.centerYAnchor.constraint(equalTo: button.centerYAnchor),
-            image.heightAnchor.constraint(equalTo: image.widthAnchor),
             image.widthAnchor.constraint(equalToConstant: 26),
+            image.heightAnchor.constraint(equalTo: image.widthAnchor),
+            image.centerYAnchor.constraint(equalTo: button.centerYAnchor),
+            image.trailingAnchor.constraint(equalTo: button.trailingAnchor, constant: .padding(-1)),
         ])
     }
 }

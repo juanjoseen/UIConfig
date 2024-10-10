@@ -9,14 +9,14 @@ import UIKit
 
 open class SelectionItem {
     open var title: String
-    open var icon: UIImage?
+    open var icon: Icon?
     open var subTitle: String?
     var isSelected: Bool = false
     
-    public init(title: String, subTitle: String? = nil, icon: UIImage? = nil) {
+    public init(title: String, subTitle: String? = nil, icon: Icon? = nil) {
+        self.icon = icon
         self.title = title
         self.subTitle = subTitle
-        self.icon = icon
     }
 }
 
@@ -29,13 +29,16 @@ open class RadiusSelection: UIViewController {
     
     open var items: [SelectionItem]!
     open var titleMessage: String!
-    var acceptTitle: String!
     open var color: UIColor!
     open var tag: Int = 0
     
+    var message: String?
+    var acceptTitle: String!
+    
     private var MAX_TABLE_HEIGHT: CGFloat {
         let total: CGFloat = view.screenHeight
-        return total - 300
+        let msgHeight: CGFloat = message?.textHeight(for: .regular) ?? 0
+        return total - (300 + msgHeight)
     }
     
     public weak var delegate: RadiusDelegate?
@@ -57,12 +60,13 @@ open class RadiusSelection: UIViewController {
         return table
     }()
     
-    public convenience init(with items: [SelectionItem], titleMessage: String, acceptTitle: String = "Accept", color: UIColor = .systemBlue) {
+    public convenience init(with items: [SelectionItem], title: String, message: String? = nil, acceptTitle: String = "Accept", color: UIColor = .systemBlue) {
         self.init()
         self.color = color
         self.items = items
+        self.message = message
+        self.titleMessage = title
         self.acceptTitle = acceptTitle
-        self.titleMessage = titleMessage
         self.modalPresentationStyle = .overCurrentContext
     }
     
@@ -89,11 +93,12 @@ open class RadiusSelection: UIViewController {
         let blurView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
         blurView.translatesAutoresizingMaskIntoConstraints = false
         
-        let btnAccept: UIButton = UIButton(title: acceptTitle, color: .white, bgColor: color, radius: .standardRadius)
+        let btnAccept: UIButton = UIButton(title: acceptTitle, color: .white, bgColor: color, radius: .buttonRadius)
         btnAccept.titleLabel?.font = .subtitle(20)
         btnAccept.addTarget(self, action: #selector(actionAccept), for: .touchUpInside)
         
         let lblTitle: UILabel = UILabel(text: titleMessage, font: .subtitle(20), alignment: .center)
+        let lblMessage: UILabel = UILabel(text: message, font: .regular)
         
         let tableHeight: CGFloat = heightForTable() + 8.0
         
@@ -113,22 +118,38 @@ open class RadiusSelection: UIViewController {
             bgView.bottomAnchor.constraint(equalTo: blurView.bottomAnchor),
             bgView.leadingAnchor.constraint(equalTo: blurView.leadingAnchor),
             bgView.trailingAnchor.constraint(equalTo: blurView.trailingAnchor),
-            bgView.topAnchor.constraint(equalTo: lblTitle.topAnchor, constant: .inversePadding * 2.0),
+            bgView.topAnchor.constraint(equalTo: lblTitle.topAnchor, constant: .padding(-1.5)),
             
             btnAccept.heightAnchor.constraint(equalToConstant: .buttonHeight),
-            btnAccept.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding * 1.5),
-            btnAccept.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .inversePadding * 1.5),
-            btnAccept.bottomAnchor.constraint(equalTo: blurView.safeAreaLayoutGuide.bottomAnchor, constant: .inversePadding),
+            btnAccept.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding(1.5)),
+            btnAccept.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .padding(-1.5)),
+            btnAccept.bottomAnchor.constraint(equalTo: blurView.safeAreaLayoutGuide.bottomAnchor, constant: .padding(-1)),
             
+            tableView.heightAnchor.constraint(equalToConstant: tableHeight),
             tableView.leadingAnchor.constraint(equalTo: bgView.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: bgView.trailingAnchor),
-            tableView.heightAnchor.constraint(equalToConstant: tableHeight),
-            tableView.bottomAnchor.constraint(equalTo: btnAccept.topAnchor, constant: .inversePadding * 2),
-            
-            lblTitle.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding),
-            lblTitle.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .inversePadding),
-            lblTitle.bottomAnchor.constraint(equalTo: tableView.topAnchor, constant: .inversePadding * 2.0),
+            tableView.bottomAnchor.constraint(equalTo: btnAccept.topAnchor, constant: .padding(-1.5)),
         ])
+        
+        if message != nil {
+            bgView.addSubview(lblMessage)
+            
+            NSLayoutConstraint.activate([
+                lblMessage.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding),
+                lblMessage.bottomAnchor.constraint(equalTo: tableView.topAnchor, constant: .padding(-1)),
+                lblMessage.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .padding(-1)),
+                
+                lblTitle.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding),
+                lblTitle.bottomAnchor.constraint(equalTo: lblMessage.topAnchor, constant: .padding(-1.5)),
+                lblTitle.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .padding(-1)),
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                lblTitle.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: .padding),
+                lblTitle.bottomAnchor.constraint(equalTo: tableView.topAnchor, constant: .padding(-2)),
+                lblTitle.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: .padding(-1)),
+            ])
+        }
     }
     
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

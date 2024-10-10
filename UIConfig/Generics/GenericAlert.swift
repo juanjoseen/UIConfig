@@ -95,7 +95,7 @@ open class GenericAlert: UIViewController {
         let lblMessage: UILabel = UILabel(text: message, font: .regular(17), alignment: self.alignment)
         lblMessage.numberOfLines = 0
         
-        let btnOk: UIButton = UIButton(title: okTitle, color: .white, bgColor: color, radius: .standardRadius)
+        let btnOk: UIButton = UIButton(title: okTitle, color: .white, bgColor: color, radius: .buttonRadius)
         btnOk.titleLabel?.font = FontConfig.current.subtitle
         btnOk.addTarget(self, action: #selector(actionOk), for: .touchUpInside)
         
