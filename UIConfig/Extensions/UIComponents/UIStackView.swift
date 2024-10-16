@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIStackView {
+public extension UIStackView {
     convenience init(axis: NSLayoutConstraint.Axis, spacing: CGFloat = 8.0, distribution: UIStackView.Distribution = .fillEqually, alignment: Alignment = .fill, views: [UIView] = []) {
         if views.isEmpty {
             self.init()
