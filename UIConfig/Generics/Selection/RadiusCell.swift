@@ -10,8 +10,8 @@ import UIKit
 class RadiusCell: UITableViewCell {
     
     lazy var btnSelection: UIButton = {
-        let button: UIButton = UIButton(image: "circle", isSystem: true, size: 24, color: .textLight)
-        button.setImage(UIImage.system(named: "checkmark.circle.fill", size: 24), for: .selected)
+        let button: UIButton = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.isUserInteractionEnabled = false
         return button
     }()
@@ -47,19 +47,19 @@ class RadiusCell: UITableViewCell {
         contentView.addSubview(lblSubtitle)
         
         NSLayoutConstraint.activate([
-            btnSelection.widthAnchor.constraint(equalToConstant: 24),
+            btnSelection.widthAnchor.constraint(equalToConstant: .padding(1.5)),
             btnSelection.centerYAnchor.constraint(equalTo: centerYAnchor),
             btnSelection.heightAnchor.constraint(equalTo: btnSelection.widthAnchor),
             btnSelection.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .padding(-1)),
             
-            lblTitle.heightAnchor.constraint(equalToConstant: 24),
-            lblTitle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            lblTitle.heightAnchor.constraint(equalToConstant: .padding(1.5)),
+            lblTitle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .padding),
             lblTitle.trailingAnchor.constraint(equalTo: btnSelection.leadingAnchor, constant: .padding(-1)),
             
             lblSubtitle.topAnchor.constraint(equalTo: lblTitle.bottomAnchor),
             lblSubtitle.leadingAnchor.constraint(equalTo: lblTitle.leadingAnchor),
             lblSubtitle.trailingAnchor.constraint(equalTo: lblTitle.trailingAnchor),
-            lblSubtitle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            lblSubtitle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: .padding(-1)),
         ])
     }
     
@@ -68,14 +68,16 @@ class RadiusCell: UITableViewCell {
         lblTitle.text = item.title
         self.color = color
         self.item = item
+        self.btnSelection.tintColor = color
         if let icon: Icon = item.icon {
             
             let imgIcon: UIImageView = UIImageView(name: icon.name, isSystem: icon.isSystemImage, size: 24, tint: color)
+            imgIcon.contentMode = .scaleAspectFit
             
             contentView.addSubview(imgIcon)
             
             NSLayoutConstraint.activate([
-                imgIcon.widthAnchor.constraint(equalToConstant: 24),
+                imgIcon.widthAnchor.constraint(equalToConstant: 32),
                 imgIcon.heightAnchor.constraint(equalTo: imgIcon.widthAnchor),
                 imgIcon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                 imgIcon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .padding),
@@ -88,7 +90,10 @@ class RadiusCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         item.isSelected = selected
-        btnSelection.isSelected = selected
-        btnSelection.tintColor = selected ? color : .textLight
+        if selected {
+            btnSelection.setImage(UIImage.system(named: "checkmark", size: 24), for: .normal)
+        } else {
+            btnSelection.setImage(nil, for: .normal)
+        }
     }
 }

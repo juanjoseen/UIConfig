@@ -230,7 +230,7 @@ extension RadiusSelection: UITableViewDelegate, UITableViewDataSource {
     }
     
     private func heitghForItem(_ item: SelectionItem) -> CGFloat {
-        return item.subTitle != nil ? 70.0 : 40.0
+        return item.subTitle != nil ? 80.0 : 56.0
     }
     
     private func heightForTable() -> CGFloat {

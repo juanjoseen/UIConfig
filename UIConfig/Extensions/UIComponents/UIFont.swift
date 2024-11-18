@@ -9,12 +9,12 @@ import UIKit
 
 public extension UIFont {
     static var largeTitle: UIFont = FontConfig.current.largeTitle
-    static var title: UIFont = FontConfig.current.title
-    static var header: UIFont = FontConfig.current.header
-    static var subtitle: UIFont = FontConfig.current.subtitle
-    static var regular: UIFont = FontConfig.current.regular
-    static var light: UIFont = FontConfig.current.light
-    static var tiny: UIFont = FontConfig.current.tiny
+    static var title: UIFont      = FontConfig.current.title
+    static var header: UIFont     = FontConfig.current.header
+    static var subtitle: UIFont   = FontConfig.current.subtitle
+    static var regular: UIFont    = FontConfig.current.regular
+    static var light: UIFont      = FontConfig.current.light
+    static var tiny: UIFont       = FontConfig.current.tiny
     
     static func title(_ size: CGFloat) -> UIFont {
         return FontConfig.current.bold(size)
