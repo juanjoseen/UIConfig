@@ -17,7 +17,7 @@ class RadiusCell: UITableViewCell {
     }()
     
     lazy var lblTitle: UILabel = {
-        return UILabel(font: .subtitle(20))
+        return UILabel(font: .subtitle)
     }()
     
     lazy var lblSubtitle: UILabel = {
@@ -81,7 +81,7 @@ class RadiusCell: UITableViewCell {
                 imgIcon.heightAnchor.constraint(equalTo: imgIcon.widthAnchor),
                 imgIcon.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
                 imgIcon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .padding),
-                lblTitle.leadingAnchor.constraint(equalTo: imgIcon.trailingAnchor, constant: .padding(0.5)),
+                lblTitle.leadingAnchor.constraint(equalTo: imgIcon.trailingAnchor, constant: .padding(0.75)),
             ])
         } else {
             lblTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: .padding).isActive = true
