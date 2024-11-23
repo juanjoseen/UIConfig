@@ -193,6 +193,8 @@ open class RadiusSelection: UIViewController {
             self.dismiss(animated: false) {
                 if let item: SelectionItem = self.items.first(where: { $0.isSelected }) {
                     self.delegate?.didSelect(item: item, on: self)
+                } else {
+                    self.delegate?.didCancel(selection: self)
                 }
             }
         }
