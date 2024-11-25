@@ -150,6 +150,7 @@ open class MultipleSelection: UIViewController {
     
     open func selectIndexes(_ indexes: [Int]) {
         selectedIndexes = indexes
+        print("selectedIndexes: \(selectedIndexes)")
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -179,7 +180,10 @@ open class MultipleSelection: UIViewController {
     @objc private func actionAccept() {
         hideView {
             self.dismiss(animated: false) {
-                let selected: [SelectionItem] = self.items.filter({ $0.isSelected })
+                var selected: [SelectionItem] = []
+                for index in self.selectedIndexes {
+                    selected.append(self.items[index])
+                }
                 self.delegate?.didSelect(items: selected, on: self)
             }
         }
